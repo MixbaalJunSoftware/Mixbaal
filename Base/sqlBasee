@@ -1,0 +1,38 @@
+﻿CREATE TABLE Usuario(
+  idUsuario int,
+  Nombre    varchar(30),
+  App	    varchar(30),
+  Apm       varchar(30),
+  Correo    varchar(50),
+  Facultad  varchar(50),
+  Telefono  varchar(15),
+  Foto 	    varchar(50),
+  ContraidContra  int
+  );
+
+CREATE TABLE Libro(
+  idLibro   int,
+  Nombre    varchar(50),
+  Autor     varchar(50),
+  Genero    varchar(50),
+  Editorial varchar(50),
+  Pais      varchar(50),
+  Foto      varchar(50),
+  Descripcion varchar(1024),
+  UsrIdUsuario int
+  );
+
+CREATE TABLE Contrasenia(
+  idContrasenia  int,
+  Contrasenia    varchar(50),
+  UsridUsuario      int
+  );
+
+CREATE TABLE Solicitudes(
+  LibroidLibro   int,
+  UsridUsuario   int,
+  Fecha          date,
+  Aceptado       boolean  
+  );  
+  
+  
