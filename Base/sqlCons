@@ -1,0 +1,25 @@
+ALTER TABLE Usuario ADD PRIMARY KEY (idUsuario);
+
+ALTER TABLE Usuario ADD CONSTRAINT fk_UsrIdCont FOREIGN KEY (ContraidContra) REFERENCES Contrasenia (idContrasenia) MATCH FULL;
+
+ALTER TABLE Usuario ADD CONSTRAINT uniq_Correo UNIQUE (Correo);
+
+ALTER TABLE Libro ADD PRIMARY KEY (idLibro);
+
+ALTER TABLE Libro ADD CONSTRAINT fk_libroidUsr FOREIGN KEY (UsrIdUsuario) REFERENCES Usuario (idUsuario) MATCH FULL;
+
+ALTER TABLE Contrasenia ADD PRIMARY KEY (idContrasenia);
+
+ALTER TABLE Contrasenia DROP COLUMN UsridUsuario RESTRICT;
+
+
+ALTER TABLE Solicitudes ADD COLUMN idSolicitudes int;
+
+ALTER TABLE Solicitudes ADD PRIMARY KEY (idSolicitudes);
+
+ALTER TABLE Solicitudes ADD CONSTRAINT fk_libroIdL FOREIGN KEY (LibroidLibro) REFERENCES Libro (idLibro) MATCH FULL;
+
+ALTER TABLE Solicitudes ADD CONSTRAINT fk_soliIdUsr FOREIGN KEY (UsridUsuario) REFERENCES Usuario (idUsuario) MATCH FULL;
+
+ 
+
