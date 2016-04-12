@@ -2,9 +2,9 @@ package modelo;
 
 import java.util.List;
 
-public class SolicitudDAO extends AbstractDAO {
+public class SolicitudesDAO extends AbstractDAO {
 
-    public SolicitudDAO() {
+    public SolicitudesDAO() {
         super();
     }
 
@@ -13,7 +13,7 @@ public class SolicitudDAO extends AbstractDAO {
      *
      * @param solicitud
      */
-    public void save(Solicitud solicitud) throws DataAccessLayerException {
+    public void save(Solicitudes solicitud) throws DataAccessLayerException {
         super.save(solicitud);
     }
 
@@ -22,7 +22,7 @@ public class SolicitudDAO extends AbstractDAO {
      *
      * @param solicitud
      */
-    public void update(Solicitud solicitud) throws DataAccessLayerException {
+    public void update(Solicitudes solicitud) throws DataAccessLayerException {
         super.update(solicitud);
     }
 
@@ -31,7 +31,7 @@ public class SolicitudDAO extends AbstractDAO {
      *
      * @param solicitud
      */
-    public void delete(Solicitud solicitud) throws DataAccessLayerException {
+    public void delete(Solicitudes solicitud) throws DataAccessLayerException {
         super.delete(solicitud);
     }
 
@@ -41,8 +41,8 @@ public class SolicitudDAO extends AbstractDAO {
      * @param id
      * @return
      */
-    public Solicitud find(Long id) throws DataAccessLayerException {
-        return (Solicitud) super.find(Solicitud.class, id);
+    public Solicitudes find(Long id) throws DataAccessLayerException {
+        return (Solicitudes) super.find(Solicitudes.class, id);
     }
 
     /**
@@ -51,6 +51,6 @@ public class SolicitudDAO extends AbstractDAO {
      * @return
      */
     public List findAll() throws DataAccessLayerException {
-        return super.findAll(Solicitud.class);
+        return super.findAll(Solicitudes.class);
     }
 }
