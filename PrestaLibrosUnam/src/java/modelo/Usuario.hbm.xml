@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 12/04/2016 01:41:34 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 14/04/2016 02:28:53 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelo.Usuario" table="usuario" schema="public" optimistic-lock="version">
         <id name="idusuario" type="int">
@@ -26,11 +26,11 @@
         <property name="telefono" type="string">
             <column name="telefono" length="15" />
         </property>
-        <property name="fotoUsr" type="binary">
-            <column name="foto_usr" />
-        </property>
         <property name="contrasenia" type="string">
             <column name="contrasenia" length="50" />
+        </property>
+        <property name="fotoUsr" type="string">
+            <column name="foto_usr" />
         </property>
         <set name="solicitudeses" table="solicitudes" inverse="true" lazy="true" fetch="select">
             <key>

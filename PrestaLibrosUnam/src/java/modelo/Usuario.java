@@ -1,5 +1,5 @@
 package modelo;
-// Generated 12/04/2016 01:41:32 PM by Hibernate Tools 4.3.1
+// Generated 14/04/2016 02:28:52 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -18,8 +18,8 @@ public class Usuario  implements java.io.Serializable {
      private String correo;
      private String facultad;
      private String telefono;
-     private byte[] fotoUsr;
      private String contrasenia;
+     private String fotoUsr;
      private Set solicitudeses = new HashSet(0);
      private Set libros = new HashSet(0);
 
@@ -30,7 +30,7 @@ public class Usuario  implements java.io.Serializable {
     public Usuario(int idusuario) {
         this.idusuario = idusuario;
     }
-    public Usuario(int idusuario, String nombre, String app, String apm, String correo, String facultad, String telefono, byte[] fotoUsr, String contrasenia, Set solicitudeses, Set libros) {
+    public Usuario(int idusuario, String nombre, String app, String apm, String correo, String facultad, String telefono, String contrasenia, String fotoUsr, Set solicitudeses, Set libros) {
        this.idusuario = idusuario;
        this.nombre = nombre;
        this.app = app;
@@ -38,8 +38,8 @@ public class Usuario  implements java.io.Serializable {
        this.correo = correo;
        this.facultad = facultad;
        this.telefono = telefono;
-       this.fotoUsr = fotoUsr;
        this.contrasenia = contrasenia;
+       this.fotoUsr = fotoUsr;
        this.solicitudeses = solicitudeses;
        this.libros = libros;
     }
@@ -93,19 +93,19 @@ public class Usuario  implements java.io.Serializable {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-    public byte[] getFotoUsr() {
-        return this.fotoUsr;
-    }
-    
-    public void setFotoUsr(byte[] fotoUsr) {
-        this.fotoUsr = fotoUsr;
-    }
     public String getContrasenia() {
         return this.contrasenia;
     }
     
     public void setContrasenia(String contrasenia) {
         this.contrasenia = contrasenia;
+    }
+    public String getFotoUsr() {
+        return this.fotoUsr;
+    }
+    
+    public void setFotoUsr(String fotoUsr) {
+        this.fotoUsr = fotoUsr;
     }
     public Set getSolicitudeses() {
         return this.solicitudeses;

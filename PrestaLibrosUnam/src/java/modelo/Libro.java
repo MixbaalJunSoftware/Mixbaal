@@ -1,5 +1,5 @@
 package modelo;
-// Generated 12/04/2016 01:41:32 PM by Hibernate Tools 4.3.1
+// Generated 14/04/2016 02:28:52 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -19,7 +19,7 @@ public class Libro  implements java.io.Serializable {
      private String editorial;
      private String pais;
      private String descripcion;
-     private byte[] fotoLibro;
+     private String fotoLibro;
      private Set solicitudeses = new HashSet(0);
 
     public Libro() {
@@ -29,7 +29,7 @@ public class Libro  implements java.io.Serializable {
     public Libro(int idlibro) {
         this.idlibro = idlibro;
     }
-    public Libro(int idlibro, Usuario usuario, String nombre, String autor, String genero, String editorial, String pais, String descripcion, byte[] fotoLibro, Set solicitudeses) {
+    public Libro(int idlibro, Usuario usuario, String nombre, String autor, String genero, String editorial, String pais, String descripcion, String fotoLibro, Set solicitudeses) {
        this.idlibro = idlibro;
        this.usuario = usuario;
        this.nombre = nombre;
@@ -98,11 +98,11 @@ public class Libro  implements java.io.Serializable {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    public byte[] getFotoLibro() {
+    public String getFotoLibro() {
         return this.fotoLibro;
     }
     
-    public void setFotoLibro(byte[] fotoLibro) {
+    public void setFotoLibro(String fotoLibro) {
         this.fotoLibro = fotoLibro;
     }
     public Set getSolicitudeses() {
