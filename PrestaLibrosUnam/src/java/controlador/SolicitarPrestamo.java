@@ -1,10 +1,10 @@
 package controlador;
 
-import modelo.Solicitud;
+import modelo.Solicitudes;
 
 public class SolicitarPrestamo {
 
-  public Solicitud solicitud;
+  public Solicitudes solicitud;
 
   public void SolicitarPrestamo() {
   }

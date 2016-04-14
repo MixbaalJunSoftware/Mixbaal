@@ -84,8 +84,15 @@ public class CrearLibro {
   
     public void crearLibro() {
         LibroDAO ld = new LibroDAO();
-        Libro libro = new Libro(this.getNombre(),this.getEditorial(),this.getAutor(),
-                    this.descripcion,this.getGenero(),this.getPais(),this.getFoto(),this.getIdLibro());
+        Libro libro = new Libro();
+        libro.setNombre(this.getNombre());
+        libro.setEditorial(this.getEditorial());
+        libro.setAutor(this.getAutor());
+        libro.setDescripcion(this.getDescripcion());
+        libro.setGenero(this.getGenero());
+        libro.setPais(this.getPais());
+        libro.setFotoLibro(this.getFoto());
+        libro.setIdlibro(this.getIdLibro());
         ld.save(libro);
     }
 

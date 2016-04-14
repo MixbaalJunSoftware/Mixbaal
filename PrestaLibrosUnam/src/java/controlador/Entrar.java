@@ -1,15 +1,32 @@
 package controlador;
 
 import modelo.Usuario;
-import modelo.Contrasenia;
+import modelo.UsuarioDAO;
 
 public class Entrar {
+    
+    private String correo;
+    private String contrasenia;
 
-  public Usuario usuario;
+    public String getCorreo() {
+        return correo;
+    }
 
-  public Contrasenia contrasenia;
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
 
-  public void entrar() {
-  }
+    public String getContrasenia() {
+        return contrasenia;
+    }
+
+    public void setContrasenia(String contrasenia) {
+        this.contrasenia = contrasenia;
+    }
+
+    public void entrar(){
+        UsuarioDAO ud = new UsuarioDAO();
+        //Usuario usuario = ud.valida(this.getCorreo(),this.getContrasenia()).get(0);    
+    }
 
 }
