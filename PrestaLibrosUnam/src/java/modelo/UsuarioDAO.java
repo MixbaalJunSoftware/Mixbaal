@@ -60,6 +60,36 @@ public class UsuarioDAO extends AbstractDAO {
         return super.findAll(Usuario.class);
     }
     
+    public boolean valida(String correo,String contrasenia){
+        SessionFactory factory; 
+        try{
+            factory = new Configuration().configure().buildSessionFactory();
+        }catch (Throwable ex) { 
+            System.err.println("Failed to create sessionFactory object." + ex);
+            throw new ExceptionInInitializerError(ex); 
+        }    
+        Session session = factory.openSession();
+        Transaction tx = null;
+        try{
+            tx = session.beginTransaction();
+            String sql = "SELECT * FROM usuario where correo ='" + correo + "' and contrasenia = '" + contrasenia+"'";
+            SQLQuery query = session.createSQLQuery(sql);
+            query.addEntity(Usuario.class);
+            List userList = query.list();
+            tx.commit();
+            if (userList!= null) {
+                return true;
+            }else{
+                return false;
+            }
+        }catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            return false ; 
+        }finally {
+            session.close(); 
+        }  
+    }
+    
     /**
      * Metedo que obtinen el maximo indice de la tabla usuario.
      * @return max, el Maximo indice de la tabla usuario. 

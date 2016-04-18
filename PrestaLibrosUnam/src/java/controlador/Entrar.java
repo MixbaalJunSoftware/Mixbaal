@@ -1,7 +1,12 @@
 package controlador;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import modelo.Usuario;
 import modelo.UsuarioDAO;
+
+@ManagedBean
+@SessionScoped
 
 public class Entrar {
     
