@@ -31,20 +31,20 @@
                 <h:form>
                     <h:panelGrid columns="3">
                         <h:outputText value="Usuario :" />
-                        <p:inputText pt:placeholder="Usuario" value="#{mBLogin.nikname}">
+                        <p:inputText pt:placeholder="Usuario" value="#{entrar.correo}">
                         </p:inputText>
                         <br/>
                         <h:outputText value="Contraseña : " />
-                        <p:inputText pt:placeholder="Contraseña" value="#{mBLogin.clave}">
+                        <p:inputText pt:placeholder="Contraseña" value="#{entrar.contrasenia}">
                         </p:inputText>
                         <br/>
                         <p:commandButton value=" Entrar " id="ajax" 
-                                         update="msn" action="#{mBLogin.login()}" styleClass="ui-priority-primary" />
+                                         update="msn" action="#{entrar.entrar()}" styleClass="ui-priority-primary" />
                     </h:panelGrid>
 
                     <br/>
 
-                    <h:outputText id="msn" value="#{mBLogin.msn}" />
+                    <h:outputText id="msn" value="#{entrar.msn}" />
 
 
                 </h:form>

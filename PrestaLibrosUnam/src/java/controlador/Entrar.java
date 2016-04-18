@@ -12,6 +12,15 @@ public class Entrar {
     
     private String correo;
     private String contrasenia;
+    private String msn;
+    
+    public String getMsn() {
+        return msn;
+    }
+
+    public void setMsn(String msn) {
+        this.msn = msn;
+    }
 
     public String getCorreo() {
         return correo;
@@ -29,9 +38,14 @@ public class Entrar {
         this.contrasenia = contrasenia;
     }
 
-    public void entrar(){
+    public String entrar(){
         UsuarioDAO ud = new UsuarioDAO();
-        //Usuario usuario = ud.valida(this.getCorreo(),this.getContrasenia()).get(0);    
+        if(ud.valida(this.getCorreo(),this.getContrasenia()))
+            return "PrincipalIH";
+        else{
+            this.setMsn("Error! Contraseña o correo incorrectos");
+            return "EntrarIH";
+        }
     }
 
 }
