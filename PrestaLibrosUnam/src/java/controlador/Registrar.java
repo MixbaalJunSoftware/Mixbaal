@@ -139,10 +139,13 @@ public class Registrar {
              usuario.setFacultad(this.getFacultad());
              usuario.setFacultad(this.getFacultad());
              usuario.setCorreo(this.getCorreo());
-             //usuario.setFotoUsr();
+             usuario.setFotoUsr("/PrestaLibrosUnam/public/imagenes/usuario.png");
              usuario.setIdusuario(user.maxIndice());
+             usuario.setTelefono(""+this.getTelefono());
              user.save(usuario);
+             System.out.printf("Todo Bien");
         }catch(Exception e){
+            System.out.printf("Algo fallo");
         }
   }
   
