@@ -105,19 +105,22 @@ public class UsuarioDAO extends AbstractDAO {
         int max=-1;
         Session session = factory.openSession();
         Transaction tx = null;
+        
         try {
             tx = session.beginTransaction();
-            String sql = "SELECT max(idusuario) FROM usuarios";
+            String sql = "SELECT max(idusuario) FROM usuario";
             SQLQuery query = session.createSQLQuery(sql);
+            //System.out.println("hola"+sql);
             max = (int)query.uniqueResult();
             tx.commit();
             //return max;
         }catch(HibernateException e){
-            
+            System.out.println("coso"+e);
         }finally{
             session.close();
         }
-      return max;
+      System.out.println(max+1);
+      return max+1;
   }
     
 }

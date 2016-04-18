@@ -15,13 +15,13 @@ import controlador.Registrar;
 public class Main {
     public static  void main(String args[]){
         Registrar u =new Registrar();
-        u.setNombe("luis");
-        u.setApp("soto");
-        u.setApm("martines");
-        u.setPassword("hola");
-        u.setCorreo("jobahi)9@gmail.com");
+        u.setNombe("jonathan");
+        u.setApp("Barragan");
+        u.setApm("Jimenez");
+        u.setPassword("cosow");
+        u.setCorreo("joba@gmail.com");
         u.setFacultad("ciencias");
-        u.setTelefono(12344);
+        u.setTelefono(1244);
         u.Registrar();
     }
 }
