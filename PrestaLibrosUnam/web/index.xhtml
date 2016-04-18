@@ -1,14 +1,43 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
-    <h:head>
-        <title>Facelet Title</title>
-    </h:head>
-    <h:body>
-        Hello from Facelets
-        <br />
-        <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
-    </h:body>
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <f:view contentType="text/html">
+        <h:head>
+            <title>PrestalibrosUnam</title>
+            <link rel="stylesheet" href="/PrestaLibrosUnam/public/css/inicio.css"/>
+        </h:head>
+        <h:body>
+            <p:layout fullPage="true">
+                <p:layoutUnit position="north" size="50"></p:layoutUnit>
+                    <p:growl id="messages"/>
+                    <h:form>
+                        <p:menubar>
+                            <f:facet name="options">
+                                <p:inputText style="margin-right:10px" placeholder="Search"/>
+                                <p:commandButton  action="registrarIH" value="Registrate" icon="ui-icon-enterlink"/>
+                            </f:facet>
+                            
+                        </p:menubar>
+
+                    </h:form>
+                    
+                
+                    <p:layoutUnit id="footer" position="south" size="50">
+                    
+                </p:layoutUnit>
+                <p:layoutUnit id="center" position="center" size="50">
+                    <h:form>
+                        <p:commandButton action="registrarIH"/>
+                    </h:form>
+                    
+                </p:layoutUnit>
+                
+            </p:layout>
+        </h:body>
+    </f:view>
 </html>
 
