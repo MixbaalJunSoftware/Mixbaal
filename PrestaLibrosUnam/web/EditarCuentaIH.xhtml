@@ -15,6 +15,45 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
     <h:body>
+        <p:layout fullPage="true">
+                <p:layoutUnit position="north" size="50"></p:layoutUnit>
+                    <p:growl id="messages"/>
+                    <h:form>
+                        <p:menubar>
+                            <f:facet name="options">
+                                <p:inputText style="margin-right:10px" placeholder="Search"/>
+                                <p:commandButton  action="EntrarIH" value="Entrar" icon="ui-icon-enterlink"/>
+                            </f:facet>                          
+                        </p:menubar>
+                    </h:form>
+                    
+                <p:layoutUnit id="footer" position="south" size="50">
+                    
+                </p:layoutUnit>
+                <p:layoutUnit position="west" size = "250">
+                    <h:form>
+                    <p:graphicImage  height="96" width="96" /> 
+                    <p:menu>
+                    <p:submenu label="Mi cuenta">
+                        <p:menuitem value="Mi cuenta" outcome="perfilIH" update="messages"/>
+                    </p:submenu>
+                   <p:submenu label="Administrar Libro">
+                      <p:menuitem value="Crear Libro" outcome="CrearLibroIH" update="messages"/>
+                      <p:menuitem value="Mis libros" outcome="MisLibrosIH" update="messages"/>
+                   </p:submenu>
+                   <p:submenu label="Solicitudes Pendientes">
+                     <p:menuitem value="Solicitudes pendientes" outcome="SolicitudesIH"/>
+                  </p:submenu>     
+                  <p:submenu label="Editar cuenta">
+                     <p:menuitem value="Editar Cuenta" outcome="EditarCuentaIH"/>
+                  </p:submenu>
+                  </p:menu>
+                  </h:form>  
+                </p:layoutUnit>    
+                    
+                <p:layoutUnit position="center" resizable="true" size="50">
+                       <h:outputText value="Bienvenido usuario" />
+                 </p:layoutUnit> 
         
     </h:body>
 </html>
