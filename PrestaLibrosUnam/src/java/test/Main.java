@@ -22,6 +22,6 @@ public class Main {
         u.setCorreo("joba@gmail.com");
         u.setFacultad("ciencias");
         u.setTelefono(1244);
-        u.Registrar();
+        u.registraU();
     }
 }

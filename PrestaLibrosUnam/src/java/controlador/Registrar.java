@@ -29,6 +29,8 @@ public class Registrar {
     private int telefono;//Teleffono del usuario.
     private String facultad;//Facultad del usuario. 
     private String correo;//Correo del usuario.
+    private String msn;    
+    
     /**
      * 
      * @return  el correo del usuario
@@ -42,6 +44,20 @@ public class Registrar {
      */
     public void setCorreo(String correo) {
         this.correo = correo;
+    }
+    /**
+     * 
+     * @return  un mensage
+     */
+    public String getMsn() {
+        return msn;
+    }
+    /**
+     * 
+     * @param msn 
+     */
+    public void setMsn(String msn) {
+        this.msn = msn;
     }
     /**
      * 
@@ -128,7 +144,7 @@ public class Registrar {
         this.facultad = facultad;
     }
     
-  public void Registrar() {
+  public void registraU() {
         usuario = new Usuario();
         UsuarioDAO user = new UsuarioDAO();
         try{
@@ -144,7 +160,9 @@ public class Registrar {
              usuario.setTelefono(""+this.getTelefono());
              user.save(usuario);
              System.out.printf("Todo Bien");
+             this.setMsn("todo Bien");
         }catch(Exception e){
+            this.setMsn("Algo Fallo");
             System.out.printf("Algo fallo");
         }
   }
