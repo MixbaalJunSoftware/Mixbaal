@@ -1,17 +1,8 @@
 package controlador;
 
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
 import modelo.Usuario;
 import modelo.UsuarioDAO;
 import javax.faces.bean.ManagedBean;
-import org.hibernate.HibernateException;
-import org.hibernate.SQLQuery;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
 
 @ManagedBean
 /**
