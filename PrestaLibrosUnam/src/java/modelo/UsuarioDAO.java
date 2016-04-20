@@ -60,7 +60,7 @@ public class UsuarioDAO extends AbstractDAO {
         return super.findAll(Usuario.class);
     }
     
-    public boolean valida(String correo,String contrasenia){
+    public Usuario valida(String correo,String contrasenia){
         SessionFactory factory; 
         try{
             factory = new Configuration().configure().buildSessionFactory();
@@ -75,16 +75,16 @@ public class UsuarioDAO extends AbstractDAO {
             String sql = "SELECT * FROM usuario where correo ='" + correo + "' and contrasenia = '" + contrasenia+"'";
             SQLQuery query = session.createSQLQuery(sql);
             query.addEntity(Usuario.class);
-            List userList = query.list();
+            List<Usuario> userList = query.list();
             tx.commit();
-            if (userList!= null) {
-                return true;
+            if (userList!= null && !userList.isEmpty()) {
+                return userList.get(0);
             }else{
-                return false;
+                return null;
             }
         }catch (HibernateException e) {
             if (tx!=null) tx.rollback();
-            return false ; 
+            return null; 
         }finally {
             session.close(); 
         }  

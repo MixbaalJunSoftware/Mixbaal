@@ -5,7 +5,8 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>Login</title>
     </h:head>
@@ -40,12 +41,14 @@
                         <br/>
                         <p:commandButton value=" Entrar " id="ajax" 
                                          update="msn" action="#{entrar.entrar()}" styleClass="ui-priority-primary" />
-                        <p:commandButton value="Registrate" action="registrarIH"/> 
+                        <c:if test="#{entrar.hayUsuario()}">
+                        <p:commandButton value="Registrate" action="registrarIH"/>
+                        </c:if>
                     </h:panelGrid>
 
                     <br/>
 
-                    <h:outputText id="msn" value="#{entrar.msn}" />
+                    <h:outputText id="msn" value="#{entrar.msn}"/>
 
 
                 </h:form>
