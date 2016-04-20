@@ -17,7 +17,7 @@ public class Registrar {
     private String app;//Apellido paterno del usuario.
     private String apm;//Apellido materno del usuario.
     private String password;//contrasenia del usuario.
-    private int telefono;//Teleffono del usuario.
+    private String telefono;//Teleffono del usuario.
     private String facultad;//Facultad del usuario. 
     private String correo;//Correo del usuario.
     private String msn;    
@@ -110,14 +110,14 @@ public class Registrar {
      * 
      * @return el telefono del usuario 
      */
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
     /**
      * 
      * @param telefono el telefono de el usuario. 
      */
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
     /**
@@ -148,7 +148,7 @@ public class Registrar {
              usuario.setCorreo(this.getCorreo());
              usuario.setFotoUsr("/PrestaLibrosUnam/public/imagenes/usuario.png");
              usuario.setIdusuario(user.maxIndice());
-             usuario.setTelefono(""+this.getTelefono());
+             usuario.setTelefono(this.getTelefono());
              user.save(usuario);
              System.out.printf("Todo Bien");
              this.setMsn("todo Bien");

@@ -15,7 +15,7 @@ and open the template in the editor.
     <h:head>
         <title>Perfil</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-         
+        <link rel="stylesheet" href="/PrestaLibrosUnam/public/css/inicio.css"/> 
     </h:head>
     <h:body>
         <p:layout fullPage="true">
@@ -35,7 +35,9 @@ and open the template in the editor.
                 </p:layoutUnit>
                 <p:layoutUnit position="west" size = "250">
                     <h:form>
-                    <p:graphicImage  height="96" width="96" /> 
+                    
+                    <p:graphicImage value="/public/imagenes/usuario.png" id="fperfil" />
+                    
                     <p:menu>
                     <p:submenu label="Mi cuenta">
                         <p:menuitem value="Mi cuenta" outcome="perfilIH" update="messages"/>
@@ -56,6 +58,7 @@ and open the template in the editor.
                     
                 <p:layoutUnit position="center" resizable="true" size="50">
                        <h:outputText value="Bienvenido usuario" />
+                       
                  </p:layoutUnit> 
                     
                                       

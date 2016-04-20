@@ -10,6 +10,7 @@ and open the template in the editor.
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
+    <f:view contentType="text/html">
     <h:head>
         <title>Editar Cuenta</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -23,6 +24,9 @@ and open the template in the editor.
                             <f:facet name="options">
                                 <p:inputText style="margin-right:10px" placeholder="Search"/>
                                 <p:commandButton  action="EntrarIH" value="Entrar" icon="ui-icon-enterlink"/>
+                                <p:commandLink id="index" action="PrincipalIH">
+                                   <h:outputText value="PrestaLibrosUnam" />
+                               </p:commandLink>
                             </f:facet>                          
                         </p:menubar>
                     </h:form>
@@ -32,7 +36,7 @@ and open the template in the editor.
                 </p:layoutUnit>
                 <p:layoutUnit position="west" size = "250">
                     <h:form>
-                    <p:graphicImage  height="96" width="96" /> 
+                    <p:graphicImage value="/public/imagenes/usuario.png" id="fperfil" />
                     <p:menu>
                     <p:submenu label="Mi cuenta">
                         <p:menuitem value="Mi cuenta" outcome="perfilIH" update="messages"/>
@@ -52,8 +56,32 @@ and open the template in the editor.
                 </p:layoutUnit>    
                     
                 <p:layoutUnit position="center" resizable="true" size="50">
-                       <h:outputText value="Bienvenido usuario" />
-                 </p:layoutUnit> 
-        
-    </h:body>
+                    <h2>Editar cuenta</h2>
+                       <h:outputText value="Escribe en los campos que quieras modificar"/>
+                        <p:graphicImage value="/public/imagenes/usuario.png" id="fperfil" />
+                        
+                       <p:panelGrid columns="2">
+                            <h:outputText value="Nombre:" />
+                            <p:inputText id="nombre" value="#{editarUsuario.nombre}" />
+                            <h:outputText value="Apellido paterno:" />
+                            <p:inputText id="app" value="#{editarUsuario.app}" />
+                            <h:outputText value="Apellido materno:" />
+                            <p:inputText id="apm" value="#{editarUsuario.apm}" />
+                            <h:outputText value="Contraseña:" />
+                            <p:password id="contraseña" value="#{editarUsuario.password}" />
+                            <h:outputText value="Confirmar contraseña:" />
+                            <p:password id="ccontraseña" value="#{editarUsuario.cpassword}" />
+                            <h:outputText value="Telefono:" />
+                            <p:inputText id="tel" value="#{editarUsuario.telefono}" />
+                            <h:outputText value="Facultad:" />
+                            <p:inputText id="fac" value="#{editarUsuario.facultad}" />
+                       </p:panelGrid>
+                        <p:commandButton  action="#{editarUsuario.editar}" value="Aceptar"/>
+                        <p:commandButton  action="#{eliminarUsuario.eliminar}" value="Eliminar Cuenta"/>
+                        <p:commandButton  action="perfilIH" value="Cancelar"/>
+                        <h:outputText id="msn" value="#{editarUsuario.msn}" />
+                 </p:layoutUnit>
+              </p:layout>
+            </h:body>
+        </f:view>
 </html>

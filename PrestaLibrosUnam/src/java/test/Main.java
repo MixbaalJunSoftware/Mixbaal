@@ -21,7 +21,7 @@ public class Main {
         u.setPassword("cosow");
         u.setCorreo("joba@gmail.com");
         u.setFacultad("ciencias");
-        u.setTelefono(1244);
+        u.setTelefono("1244");
         u.registraU();
     }
 }
