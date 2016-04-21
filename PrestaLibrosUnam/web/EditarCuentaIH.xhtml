@@ -61,9 +61,16 @@ and open the template in the editor.
                 <p:layoutUnit position="center" resizable="true" size="50">
                     <h:form>
                     <h2>Editar cuenta</h2>
-                       <h:outputText value="Escribe en los campos que quieras modificar"/>
-                        <p:graphicImage value="/public/imagenes/usuario.png" id="fperfil" />
-                        
+                        <p:graphicImage value="/public/imagenes/usuario.png" id="fperfil2" />
+                        <p:panelGrid columns="2">
+                            <h:outputText value="Cambiar imagen:" />
+                            
+                            <p:fileUpload fileUploadListener ="#{editarUsuario.upload2}" allowTypes="/(\.|\/)(jpe?g|png)$/" value="Select Images"/>
+                           
+
+                        </p:panelGrid>
+                         
+                        <h:outputText value="Escribe en los campos que quieras modificar"/>
                        <p:panelGrid columns="2">
                             <h:outputText value="Contraseña:" />
                             <p:password id="contraseña" value="#{editarUsuario.password}" />
@@ -73,7 +80,8 @@ and open the template in the editor.
                             <p:inputText id="tel" value="#{editarUsuario.telefono}" />
                             <h:outputText value="Facultad:" />
                             <p:inputText id="fac" value="#{editarUsuario.facultad}" />
-                       </p:panelGrid>                        
+                            
+                            </p:panelGrid>                        
                         <p:commandButton  action="#{editarUsuario.editar}" value="Aceptar"/>
                         <p:commandButton  action="#{eliminarUsuario.eliminar}" value="Eliminar Cuenta"/>
                         <p:commandButton  action="perfilIH" value="Cancelar"/>
