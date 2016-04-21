@@ -1,8 +1,11 @@
 package controlador;
 
-public class AceptarSolicitud {
+import modelo.Solicitudes;
 
+public class AceptarSolicitud {
+  private Solicitudes s;
   public void AceptarSolicitud() {
+      
   }
 
 }
