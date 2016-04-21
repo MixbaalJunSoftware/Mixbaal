@@ -147,7 +147,7 @@ public class Registrar {
              usuario.setFacultad(this.getFacultad());
              usuario.setCorreo(this.getCorreo());
              usuario.setFotoUsr("/PrestaLibrosUnam/public/imagenes/usuario.png");
-             usuario.setIdusuario(user.maxIndice());
+             //usuario.setIdusuario(user.maxIndice());
              usuario.setTelefono(this.getTelefono());
              user.save(usuario);
              System.out.printf("Todo Bien");

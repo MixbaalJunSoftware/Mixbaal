@@ -90,41 +90,7 @@ public class UsuarioDAO extends AbstractDAO {
         }  
     }
     
-    /**
-     * Metedo que obtinen el maximo indice de la tabla usuario.
-     * @return max, el Maximo indice de la tabla usuario. 
-     */
-    public int maxIndice(){
-      SessionFactory factory;
-        try {
-            factory = new Configuration().configure().buildSessionFactory();
-        } catch (Throwable ex) {
-            System.err.println("Failed to create sessionFactory object." + ex);
-            throw new ExceptionInInitializerError(ex);
-        }
-        int max=-1;
-        Session session = factory.openSession();
-        Transaction tx = null;
-        //System.out.println(max+1);
-        try {
-            tx = session.beginTransaction();
-            String sql = "SELECT max(idusuario) FROM usuario";
-            SQLQuery query = session.createSQLQuery(sql);
-            //System.out.println("hola"+sql);
-            if(query != null){
-                max = (int)query.uniqueResult();
-            }
-            //System.out.println(max);
-            tx.commit();
-            //return max;
-        }catch(HibernateException e){
-            System.out.println("coso"+e);
-            
-        }finally{
-            session.close();
-        }
-      //System.out.println(max+1);
-      return max+1;
-  }
+    
+    
     
 }

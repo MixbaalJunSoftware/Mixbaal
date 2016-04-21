@@ -4,8 +4,11 @@ import modelo.DataAccessLayerException;
 import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
 
 /**
  *
@@ -94,4 +97,37 @@ public abstract class AbstractDAO {
         session = HibernateFactory.openSession();
         tx = session.beginTransaction();
     }
+    
+    public int maxIndice(String tabla,String atributo){
+      SessionFactory factory;
+        try {
+            factory = new Configuration().configure().buildSessionFactory();
+        } catch (Throwable ex) {
+            System.err.println("Failed to create sessionFactory object." + ex);
+            throw new ExceptionInInitializerError(ex);
+        }
+        int max=-1;
+        Session session = factory.openSession();
+        Transaction tx = null;
+        //System.out.println(max+1);
+        try {
+            tx = session.beginTransaction();
+            String sql = "SELECT max("+atributo+") FROM "+tabla;
+            SQLQuery query = session.createSQLQuery(sql);
+            //System.out.println("hola"+sql);
+            if(query.uniqueResult() != null){
+                max = (int)query.uniqueResult();
+            }
+            //System.out.println(max);
+            tx.commit();
+            //return max;
+        }catch(HibernateException e){
+            System.out.println("coso"+e);
+            
+        }finally{
+            session.close();
+        }
+      //System.out.println(max);
+      return max+1;
+  }
 }
