@@ -65,12 +65,6 @@ and open the template in the editor.
                         <p:graphicImage value="/public/imagenes/usuario.png" id="fperfil" />
                         
                        <p:panelGrid columns="2">
-                            <h:outputText value="Nombre:" />
-                            <p:inputText id="nombre" value="#{editarUsuario.nombre}" />
-                            <h:outputText value="Apellido paterno:" />
-                            <p:inputText id="app" value="#{editarUsuario.app}" />
-                            <h:outputText value="Apellido materno:" />
-                            <p:inputText id="apm" value="#{editarUsuario.apm}" />
                             <h:outputText value="Contraseña:" />
                             <p:password id="contraseña" value="#{editarUsuario.password}" />
                             <h:outputText value="Confirmar contraseña:" />
@@ -79,8 +73,7 @@ and open the template in the editor.
                             <p:inputText id="tel" value="#{editarUsuario.telefono}" />
                             <h:outputText value="Facultad:" />
                             <p:inputText id="fac" value="#{editarUsuario.facultad}" />
-                       </p:panelGrid>
-                        
+                       </p:panelGrid>                        
                         <p:commandButton  action="#{editarUsuario.editar}" value="Aceptar"/>
                         <p:commandButton  action="#{eliminarUsuario.eliminar}" value="Eliminar Cuenta"/>
                         <p:commandButton  action="perfilIH" value="Cancelar"/>

@@ -20,6 +20,7 @@ public class EditarUsuario {
   private String telefono;//Teleffono del usuario.
   private String facultad;//Facultad del usuario. 
   private String msn;  
+  private boolean modificado;
   
   
     public String getNombre() {
@@ -96,19 +97,27 @@ public class EditarUsuario {
     
       
     public String editar() {
-        if (this.password.equals(this.cpassword)){
         UsuarioDAO usr = new UsuarioDAO();
-        if (this.getNombre().equals("")){
-            
+        if (!this.password.equals("")&&this.password != null){  
+            if(this.password.equals(this.cpassword)){
+                usuario.setContrasenia(this.getPassword());
+                modificado = true;
+            }
+            else{
+                this.setMsn("La contraseña no coincide");
+                return "EditarCuentaIH";
+            }
         }
-        try{
-            usuario.setNombre(this.getNombre());
-            usuario.setApp(this.getApm());
-            usuario.setApm(this.getApm());
-            usuario.setContrasenia(this.getPassword());
-            usuario.setFacultad(this.getFacultad());
-            usuario.setTelefono(this.getTelefono());
-            System.out.print("modificando usuario");
+        else if(!this.telefono.equals("")&&this.telefono!= null){
+                usuario.setTelefono(this.getTelefono());
+                modificado = true;
+        }
+        else if (!this.getFacultad().equals("")&& this.getFacultad()!=null){
+               usuario.setFacultad(this.getFacultad());
+               modificado = true;
+        }
+        if (modificado){
+            try{   
             usr.update(usuario);
             System.out.print("se actualizo el usuario");
             this.setMsn("Se actualizaron tus datos correctamente");
@@ -119,10 +128,9 @@ public class EditarUsuario {
             return "EditarCuentaIH"; 
         }
         }
-        else{
-            this.setMsn("La contraseña no coincide");
+        else {
+            this.setMsn("No hay ningun dato para modificar");
             return "EditarCuentaIH";
         }
-        
-    }    
+    }
 }
