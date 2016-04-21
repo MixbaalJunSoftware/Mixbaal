@@ -27,6 +27,9 @@ and open the template in the editor.
                                 <p:commandLink id="index" action="PrincipalIH">
                                    <h:outputText value="PrestaLibrosUnam" />
                                </p:commandLink>
+                                <p:commandLink id="perfil" action="perfilIH">
+                                   <h:outputText value="Mi perfil" />
+                               </p:commandLink>
                             </f:facet>                          
                         </p:menubar>
                     </h:form>
@@ -56,6 +59,7 @@ and open the template in the editor.
                 </p:layoutUnit>    
                     
                 <p:layoutUnit position="center" resizable="true" size="50">
+                    <h:form>
                     <h2>Editar cuenta</h2>
                        <h:outputText value="Escribe en los campos que quieras modificar"/>
                         <p:graphicImage value="/public/imagenes/usuario.png" id="fperfil" />
@@ -76,10 +80,12 @@ and open the template in the editor.
                             <h:outputText value="Facultad:" />
                             <p:inputText id="fac" value="#{editarUsuario.facultad}" />
                        </p:panelGrid>
+                        
                         <p:commandButton  action="#{editarUsuario.editar}" value="Aceptar"/>
                         <p:commandButton  action="#{eliminarUsuario.eliminar}" value="Eliminar Cuenta"/>
                         <p:commandButton  action="perfilIH" value="Cancelar"/>
                         <h:outputText id="msn" value="#{editarUsuario.msn}" />
+                        </h:form>
                  </p:layoutUnit>
               </p:layout>
             </h:body>

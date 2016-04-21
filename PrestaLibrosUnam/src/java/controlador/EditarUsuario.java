@@ -3,8 +3,10 @@ package controlador;
 import modelo.Usuario;
 import modelo.UsuarioDAO;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 @ManagedBean
+@SessionScoped
 
 public class EditarUsuario {
 
@@ -84,11 +86,21 @@ public class EditarUsuario {
         this.cpassword = cpassword;
     }
     
+    public Usuario getUsuario(){
+        return this.usuario;
+    }
+    
+    public void setUsuario(Usuario usr){
+        this.usuario=usr;
+    }
+    
       
     public String editar() {
         if (this.password.equals(this.cpassword)){
         UsuarioDAO usr = new UsuarioDAO();
-        this.usuario = new Usuario();
+        if (this.getNombre().equals("")){
+            
+        }
         try{
             usuario.setNombre(this.getNombre());
             usuario.setApp(this.getApm());
@@ -96,7 +108,9 @@ public class EditarUsuario {
             usuario.setContrasenia(this.getPassword());
             usuario.setFacultad(this.getFacultad());
             usuario.setTelefono(this.getTelefono());
-            usr.save(usuario);
+            System.out.print("modificando usuario");
+            usr.update(usuario);
+            System.out.print("se actualizo el usuario");
             this.setMsn("Se actualizaron tus datos correctamente");
             return "perfilIH";    
             
