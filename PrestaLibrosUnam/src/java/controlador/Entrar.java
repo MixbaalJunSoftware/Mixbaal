@@ -65,7 +65,7 @@ public class Entrar {
         if(u!=null){
             this.setUsuario(u);
             this.setMsn("");
-            return "PrincipalIH";
+            return "CrearLibroIH";
         }
         this.setMsn("Error! Contraseña o correo incorrectos");
         return "EntrarIH";

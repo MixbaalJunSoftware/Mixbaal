@@ -3,19 +3,24 @@ package controlador;
 import modelo.Libro;
 import modelo.LibroDAO;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+import javax.faces.event.ActionEvent;
+import modelo.Usuario;
 
 @ManagedBean
+@RequestScoped
 
 public class CrearLibro {
     
-    public String nombre;
-    public String editorial;
-    public String autor;
-    public String descripcion;
-    public String genero;
-    public String pais;
-    public String foto;
-    public int idLibro;
+    private String nombre;
+    private String editorial;
+    private String autor;
+    private String descripcion;
+    private String genero;
+    private String pais;
+    private String foto;
+    private int idLibro;
+    private Usuario usuario;
 
     public String getNombre() {
         return nombre;
@@ -80,11 +85,16 @@ public class CrearLibro {
     public void setIdLibro(int idLibro) {
         this.idLibro = idLibro;
     }
+    
+    public void listener(ActionEvent event){
+	usuario = (Usuario)event.getComponent().getAttributes().get("usuario");
+    }
    
   
     public String crearLibro() {
         LibroDAO ld = new LibroDAO();
         Libro libro = new Libro();
+        libro.setIdlibro(ld.maxIndice());
         libro.setNombre(this.getNombre());
         libro.setEditorial(this.getEditorial());
         libro.setAutor(this.getAutor());
@@ -92,9 +102,9 @@ public class CrearLibro {
         libro.setGenero(this.getGenero());
         libro.setPais(this.getPais());
         libro.setFotoLibro(this.getFoto());
-        libro.setIdlibro(this.getIdLibro());
+        libro.setUsuario(usuario);
         ld.save(libro);
-        return "perfilIH";
+        return "EntrarIH";
     }
 
 }

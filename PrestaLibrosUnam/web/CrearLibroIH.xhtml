@@ -30,7 +30,10 @@
                 <br/>
                 <h:outputText value="Foto"/>
                 <p:inputText value="#{crearLibro.foto}"/>
-                <p:commandButton value="Crear" action="#{crearLibro.crearLibro()}"/>
+                <p:commandButton value="Crear" action="#{crearLibro.crearLibro()}" actionListener="#{crearLibro.listener}" >
+                    <f:attribute name="usuario" value="#{entrar.usuario}" />
+                </p:commandButton>
+                <p:commandButton value="incio" action="EntrarIH"/>
             </h:form>
         </f:view>
 
