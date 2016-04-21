@@ -10,7 +10,7 @@ import javax.faces.bean.SessionScoped;
 
 public class EliminarUsuario {
 
-  public Usuario usario;
+  public Usuario usuario;
   private String msn;
   
    public String getMsn() {
@@ -21,13 +21,25 @@ public class EliminarUsuario {
         this.msn = msn;
     }
 
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+    
+    
+
   public String eliminar() {
       UsuarioDAO usr = new UsuarioDAO();
       try{
-          usr.delete(usario);
+          usr.delete(usuario);
+          System.out.print("Se elimino correctamente");
           return "PrincipalIH";
       }catch(Exception e){
           this.setMsn("¡UPS! Ocurrio un error, vuelve a intentarlo");
+          System.out.print("Ocurrio un error");
           return "EditarCuentaIH";
       }
   }

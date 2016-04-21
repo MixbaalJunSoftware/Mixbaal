@@ -98,8 +98,8 @@ public class EditarUsuario {
       
     public String editar() {
         UsuarioDAO usr = new UsuarioDAO();
-        if (!this.password.equals("")&&this.password != null){  
-            if(this.password.equals(this.cpassword)){
+        if (this.getPassword() != null&&!this.getPassword().equals("")){  
+            if(this.getPassword().equals(this.getCpassword())){
                 usuario.setContrasenia(this.getPassword());
                 modificado = true;
             }
@@ -108,11 +108,11 @@ public class EditarUsuario {
                 return "EditarCuentaIH";
             }
         }
-        else if(!this.telefono.equals("")&&this.telefono!= null){
+        else if(this.getTelefono()!= null&&!this.getTelefono().equals("")){
                 usuario.setTelefono(this.getTelefono());
                 modificado = true;
         }
-        else if (!this.getFacultad().equals("")&& this.getFacultad()!=null){
+        else if (this.getFacultad()!=null&&!this.getFacultad().equals("")){
                usuario.setFacultad(this.getFacultad());
                modificado = true;
         }
@@ -124,12 +124,14 @@ public class EditarUsuario {
             return "perfilIH";    
             
         }catch(Exception e){
+            System.out.print("algo salio mal");
              this.setMsn("¡Ups! Ocurrió un error");
             return "EditarCuentaIH"; 
         }
         }
         else {
             this.setMsn("No hay ningun dato para modificar");
+            System.out.print("no se edito nada");
             return "EditarCuentaIH";
         }
     }
