@@ -51,6 +51,14 @@ public class Entrar {
         return this.getUsuario()!=null;
     }
     
+    public String salir(){
+        this.setUsuario(null);
+        this.setCorreo("");
+        this.setContrasenia("");
+        this.setMsn("");
+        return "PrincipalIH";
+    }
+    
     public String entrar(){
         UsuarioDAO ud = new UsuarioDAO();
         Usuario u = ud.valida(this.getCorreo(),this.getContrasenia());

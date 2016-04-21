@@ -82,7 +82,7 @@ public class CrearLibro {
     }
    
   
-    public void crearLibro() {
+    public String crearLibro() {
         LibroDAO ld = new LibroDAO();
         Libro libro = new Libro();
         libro.setNombre(this.getNombre());
@@ -94,6 +94,7 @@ public class CrearLibro {
         libro.setFotoLibro(this.getFoto());
         libro.setIdlibro(this.getIdLibro());
         ld.save(libro);
+        return "perfilIH";
     }
 
 }

@@ -32,18 +32,14 @@
                 <h:form>
                     <h:panelGrid columns="3">
                         <h:outputText value="Usuario :" />
-                        <p:inputText pt:placeholder="Usuario" value="#{entrar.correo}">
-                        </p:inputText>
+                        <p:inputText pt:placeholder="Usuario" value="#{entrar.correo}"/>
                         <br/>
                         <h:outputText value="Contraseña : " />
-                        <p:inputText pt:placeholder="Contraseña" value="#{entrar.contrasenia}">
-                        </p:inputText>
+                        <p:password pt:placeholder="Contraseña" value="#{entrar.contrasenia}"/>
                         <br/>
                         <p:commandButton value=" Entrar " id="ajax" 
                                          update="msn" action="#{entrar.entrar()}" styleClass="ui-priority-primary" />
-                        <c:if test="#{entrar.hayUsuario()}">
                         <p:commandButton value="Registrate" action="registrarIH"/>
-                        </c:if>
                     </h:panelGrid>
 
                     <br/>
