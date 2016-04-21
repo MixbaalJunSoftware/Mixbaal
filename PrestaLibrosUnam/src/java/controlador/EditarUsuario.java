@@ -3,7 +3,6 @@ package controlador;
 import modelo.Usuario;
 import modelo.UsuarioDAO;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -13,11 +12,11 @@ import java.nio.file.Files;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
 
 @ManagedBean
-@SessionScoped
 @RequestScoped
 
 public class EditarUsuario {
@@ -99,13 +98,10 @@ public class EditarUsuario {
         this.cpassword = cpassword;
     }
     
-    public Usuario getUsuario(){
-        return this.usuario;
+    public void listener(ActionEvent event){
+	usuario = (Usuario)event.getComponent().getAttributes().get("usuario");
     }
-    
-    public void setUsuario(Usuario usr){
-        this.usuario=usr;
-    }
+   
     
       
     public String editar() {

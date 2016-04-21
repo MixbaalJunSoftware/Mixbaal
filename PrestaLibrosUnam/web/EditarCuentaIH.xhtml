@@ -82,7 +82,9 @@ and open the template in the editor.
                             <p:inputText id="fac" value="#{editarUsuario.facultad}" />
                             
                             </p:panelGrid>                        
-                        <p:commandButton  action="#{editarUsuario.editar}" value="Aceptar"/>
+                        <p:commandButton  action="#{editarUsuario.editar}" value="Aceptar" actionListener="#{editarUsuario.listener}">
+                            <f:attribute name="usuario" value="#{entrar.usuario}" />
+                        </p:commandButton>
                         <p:commandButton  action="#{eliminarUsuario.eliminar}" value="Eliminar Cuenta"/>
                         <p:commandButton  action="perfilIH" value="Cancelar"/>
                         <h:outputText id="msn" value="#{editarUsuario.msn}" />
