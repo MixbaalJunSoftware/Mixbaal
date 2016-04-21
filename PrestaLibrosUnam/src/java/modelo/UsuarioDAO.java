@@ -90,7 +90,9 @@ public class UsuarioDAO extends AbstractDAO {
         }  
     }
     
-    
+    public int maxIndice() {
+        return super.maxIndice("usuario","idusuario");
+    }
     
     
 }

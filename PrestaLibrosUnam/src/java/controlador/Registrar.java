@@ -3,8 +3,10 @@ package controlador;
 import modelo.Usuario;
 import modelo.UsuarioDAO;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 
 @ManagedBean
+@RequestScoped
 /**
  *
  * @author jonathanjb
@@ -20,7 +22,8 @@ public class Registrar {
     private String telefono;//Teleffono del usuario.
     private String facultad;//Facultad del usuario. 
     private String correo;//Correo del usuario.
-    private String msn;    
+    private String msn; 
+    
     
     /**
      * 
@@ -135,7 +138,9 @@ public class Registrar {
         this.facultad = facultad;
     }
     
-  public void registraU() {
+    
+    
+  public String registraU() {
         usuario = new Usuario();
         UsuarioDAO user = new UsuarioDAO();
         try{
@@ -147,14 +152,18 @@ public class Registrar {
              usuario.setFacultad(this.getFacultad());
              usuario.setCorreo(this.getCorreo());
              usuario.setFotoUsr("/PrestaLibrosUnam/public/imagenes/usuario.png");
-             //usuario.setIdusuario(user.maxIndice());
+             usuario.setIdusuario(user.maxIndice());
              usuario.setTelefono(this.getTelefono());
              user.save(usuario);
              System.out.printf("Todo Bien");
              this.setMsn("todo Bien");
+             
+             return "perfilIH";
         }catch(Exception e){
             this.setMsn("Algo Fallo");
+            
             System.out.printf("Algo fallo");
+            return "registrar";
         }
   }
   
