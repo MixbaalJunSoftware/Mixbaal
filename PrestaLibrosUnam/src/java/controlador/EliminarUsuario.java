@@ -4,6 +4,7 @@ import modelo.Usuario;
 import modelo.UsuarioDAO;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.event.ActionEvent;
 
 @ManagedBean
 @SessionScoped
@@ -29,7 +30,9 @@ public class EliminarUsuario {
         this.usuario = usuario;
     }
     
-    
+     public void listener(ActionEvent event){
+	usuario = (Usuario)event.getComponent().getAttributes().get("usuario");
+    }
 
   public String eliminar() {
       UsuarioDAO usr = new UsuarioDAO();

@@ -64,10 +64,6 @@ and open the template in the editor.
                         <p:graphicImage value="/public/imagenes/usuario.png" id="fperfil2" />
                         <p:panelGrid columns="2">
                             <h:outputText value="Cambiar imagen:" />
-                            
-                            <p:fileUpload fileUploadListener ="#{editarUsuario.upload2}" allowTypes="/(\.|\/)(jpe?g|png)$/" value="Select Images"/>
-                           
-
                         </p:panelGrid>
                          
                         <h:outputText value="Escribe en los campos que quieras modificar"/>
@@ -85,7 +81,10 @@ and open the template in the editor.
                         <p:commandButton  action="#{editarUsuario.editar}" value="Aceptar" actionListener="#{editarUsuario.listener}">
                             <f:attribute name="usuario" value="#{entrar.usuario}" />
                         </p:commandButton>
-                        <p:commandButton  action="#{eliminarUsuario.eliminar}" value="Eliminar Cuenta"/>
+                        <p:commandButton  action="#{eliminarUsuario.eliminar()}" value="Eliminar cuenta" actionListener="#{eliminarUsuario.listener}">
+                            <f:attribute name="usuario" value="#{entrar.usuario}" />
+                        </p:commandButton>
+                        
                         <p:commandButton  action="perfilIH" value="Cancelar"/>
                         <h:outputText id="msn" value="#{editarUsuario.msn}" />
                         </h:form>
