@@ -140,7 +140,7 @@ public class Registrar {
     
     
     
-  public String registraU() {
+  public String Registrar() {
         usuario = new Usuario();
         UsuarioDAO user = new UsuarioDAO();
         try{
@@ -158,12 +158,12 @@ public class Registrar {
              System.out.printf("Todo Bien");
              this.setMsn("todo Bien");
              
-             return "perfilIH";
+             return "PrincipalIH?faces-redirect=true";
         }catch(Exception e){
             this.setMsn("Algo Fallo");
             
             System.out.printf("Algo fallo");
-            return "registrar";
+            return "registrarIH?faces-redirect=true";
         }
   }
   

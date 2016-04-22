@@ -47,8 +47,8 @@ and open the template in the editor.
                             </p:inputText>
                             <br/>
                             <p:commandButton value=" Aceptar " id="ajax" 
-                                             update="msn" action="#{registrar.registraU()}"  styleClass="ui-priority-primary"/>
-                            <p:commandButton value="Cancelar" id="cancelar" action="PrincipalIH"/>
+                                             update="msn" action="#{registrar.Registrar()}"  styleClass="ui-priority-primary"/>
+                            <p:commandButton value="Cancelar" id="cancelar" action="PrincipalIH?faces-redirect=true"/>
                         </h:panelGrid>
                         <br/>
                         <h:outputText id="msn" value="#{registrar.msn}" />
