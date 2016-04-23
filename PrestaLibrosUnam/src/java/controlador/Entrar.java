@@ -53,10 +53,7 @@ public class Entrar {
     
     public String salir(){
         this.setUsuario(null);
-        this.setCorreo("");
-        this.setContrasenia("");
-        this.setMsn("");
-        return "PrincipalIH";
+        return "PrincipalIH?faces-redirect=true";
     }
     
     public String entrar(){
@@ -65,10 +62,12 @@ public class Entrar {
         if(u!=null){
             this.setUsuario(u);
             this.setMsn("");
-            return "EditarCuentaIH";
+            this.setCorreo("");
+            this.setContrasenia("");
+            return "perfilIH?faces-redirect=true";
         }
         this.setMsn("Error! Contraseña o correo incorrectos");
-        return "EntrarIH";
+        return "EntrarIH?faces-redirect=true";
     }
 
 }

@@ -20,7 +20,7 @@
                             <f:facet name="options">
                                 <p:inputText style="margin-right:10px" placeholder="Search"/>
                                 <!--<c:if test="#{!entrar.hayUsuario()}">-->
-                                <p:commandButton  action="EntrarIH" value="Entrar" icon="ui-icon-enterlink"/>
+                                <p:commandButton  action="EntrarIH?faces-redirect=true" value="Entrar" icon="ui-icon-enterlink"/>
                                 <!--</c:if>
                                 <c:if test="#{entrar.hayUsuario()}">
                                     <h:outputText value="#{entrar.correo}" />

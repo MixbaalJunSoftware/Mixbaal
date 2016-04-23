@@ -104,7 +104,7 @@ public class CrearLibro {
         libro.setFotoLibro(this.getFoto());
         libro.setUsuario(usuario);
         ld.save(libro);
-        return "EntrarIH";
+        return "EntrarIH?faces-redirect=true";
     }
 
 }
