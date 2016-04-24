@@ -39,7 +39,7 @@ and open the template in the editor.
                 </p:layoutUnit>
                 <p:layoutUnit position="west" size = "250">
                     <h:form>
-                    <p:graphicImage value="/public/imagenes/usuario.png" id="fperfil" />
+                    <p:graphicImage value="#{entrar.usuario.getFotoUsr()}" id="fperfil" />
                     <p:menu>
                     <p:submenu label="Mi cuenta">
                         <p:menuitem value="Mi cuenta" outcome="perfilIH" update="messages"/>

@@ -20,11 +20,13 @@ public class CrearLibro {
     private String pais;
     private String foto;
     private int idLibro;
+    private String msn ;
     private Usuario usuario;
 
     public String getNombre() {
         return nombre;
     }
+
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -86,9 +88,18 @@ public class CrearLibro {
         this.idLibro = idLibro;
     }
     
+    public String getMsn() {
+        return msn;
+    }
+
+    public void setMsn(String msn) {
+        this.msn = msn;
+    }
+    
     public void listener(ActionEvent event){
 	usuario = (Usuario)event.getComponent().getAttributes().get("usuario");
     }
+    
    
   
     public String crearLibro() {
@@ -103,8 +114,11 @@ public class CrearLibro {
         libro.setPais(this.getPais());
         libro.setFotoLibro(this.getFoto());
         libro.setUsuario(usuario);
+        this.setMsn("Libro Creado Correctamente");
         ld.save(libro);
-        return "EntrarIH?faces-redirect=true";
+        return "CrearLibroIH?faces-redirect=true";
     }
+    
+    
 
 }

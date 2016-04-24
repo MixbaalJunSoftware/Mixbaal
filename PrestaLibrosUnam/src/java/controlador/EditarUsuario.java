@@ -8,6 +8,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.Serializable;
 import java.nio.file.Files;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.RequestScoped;
@@ -18,10 +19,9 @@ import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
 
 @ManagedBean
-@RequestScoped
 @SessionScoped
 
-public class EditarUsuario {
+public class EditarUsuario implements Serializable{
 
   private Usuario usuario;
   
@@ -102,7 +102,9 @@ public class EditarUsuario {
     }   
     
     public void listener(ActionEvent event){
+        System.out.println("si inicializó al usuario");
 	usuario = (Usuario)event.getComponent().getAttributes().get("usuario");
+        
     }
    
     
@@ -147,7 +149,7 @@ public class EditarUsuario {
         }
     }
     
-    private final String destination= "/home/danii/Escritorio/Ingenieria/Mixbaal/PrestaLibrosUnam/web/public/imagenes/usuarios/";
+    private final String destination= "/home/luis/NetBeansProjects/Mixbaal/PrestaLibrosUnam/web/public/imagenes/";
     
     public void upload (FileUploadEvent event) {
       FacesMessage msg = new FacesMessage("Success! ", event.getFile().getFileName() + " is uploaded.");
@@ -169,6 +171,9 @@ public class EditarUsuario {
          byte[] bytes = new byte[1024]; 
          while ((read = in.read(bytes)) != -1) {
         out.write(bytes, 0, read);
+        UsuarioDAO ud = new UsuarioDAO();
+        usuario.setFotoUsr("/public/imagenes/" + fileName);
+        ud.update(usuario);
       }
       in.close();
       out.flush();

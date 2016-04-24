@@ -5,38 +5,36 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Crear Libro</title>
     </h:head>
     <h:body>
-        <f:view>
-            <h:form>
-                <h:outputText value="Titulo"/>
-                <p:inputText value="#{crearLibro.nombre}"/>
+        <h:form>
+            <p:panel header="Crar un Libro">  
+                <p:growl id="messages" showDetail="true" />
+                <h:panelGrid columns="2" cellpadding="5">    
+                    <h:outputText value="Titulo"/>
+                    <p:inputText value="#{crearLibro.nombre}"/>
+                    <h:outputText value="Autor"/>
+                    <p:inputText value="#{crearLibro.autor}"/>
+                    <h:outputText value="Editorial"/>
+                    <p:inputText value="#{crearLibro.editorial}"/>
+                    <h:outputText value="Genero"/>
+                    <p:inputText value="#{crearLibro.genero}"/>
+                    <h:outputText value="Pais"/>
+                    <p:inputText value="#{crearLibro.pais}"/>
+                    <h:outputText value="Descripcion"/>
+                    <p:inputText value="#{crearLibro.descripcion}"/>
+                    <h:outputText value="Foto"/>
+                    <p:inputText value="#{crearLibro.foto}"/>
+                </h:panelGrid>
                 <br/>
-                <h:outputText value="Autor"/>
-                <p:inputText value="#{crearLibro.autor}"/>
-                <br/>
-                <h:outputText value="Editorial"/>
-                <p:inputText value="#{crearLibro.editorial}"/>
-                <br/>
-                <h:outputText value="Genero"/>
-                <p:inputText value="#{crearLibro.genero}"/>
-                <br/>
-                <h:outputText value="Pais"/>
-                <p:inputText value="#{crearLibro.pais}"/>
-                <br/>
-                <h:outputText value="Descripcion"/>
-                <p:inputText value="#{crearLibro.descripcion}"/>
-                <br/>
-                <h:outputText value="Foto"/>
-                <p:inputText value="#{crearLibro.foto}"/>
-                <p:commandButton value="Crear" action="#{crearLibro.crearLibro()}" actionListener="#{crearLibro.listener}" >
+                <p:commandButton value="Crear" action="#{crearLibro.crearLibro()}" actionListener="#{crearLibro.listener}" update="msn">
                     <f:attribute name="usuario" value="#{entrar.usuario}" />
                 </p:commandButton>
                 <p:commandButton value="volver" action="perfilIH?faces-redirect=true"/>
-            </h:form>
-        </f:view>
-
+                <h:outputText id="msn" value="#{crearLibro.msn}"/>
+            </p:panel>
+        </h:form>
     </h:body>
 </html>
 

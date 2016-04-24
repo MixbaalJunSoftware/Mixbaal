@@ -43,6 +43,16 @@
                 </p:layoutUnit>
 
             </p:layout>
+            
+            <ui:composition template="./template.xhtml">
+            <ui:define name="content">
+                <h:form>
+                    <p:growl id="msg"></p:growl>
+                    <p:fileUpload fileUploadListener="#{FileUploadManagedBean.upload}"
+                                 allowTypes="/(\.|\/)(gif|jpe?g|png)$/" sizeLimit="10000000" update="msg"></p:fileUpload>
+                </h:form>
+            </ui:define>
+            </ui:composition>
 
         </h:body>
 

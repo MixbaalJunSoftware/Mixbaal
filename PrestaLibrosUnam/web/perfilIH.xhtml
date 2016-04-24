@@ -36,30 +36,30 @@ and open the template in the editor.
                 <p:layoutUnit position="west" size = "250">
                     <h:form>
                     
-                    <p:graphicImage value="/public/imagenes/usuario.png" id="fperfil" />
+                        <p:graphicImage value="#{entrar.usuario.getFotoUsr()}" id="fperfil" />
                     
                     <p:menu>
                     <p:submenu label="Mi cuenta">
-                        <p:menuitem value="Mi cuenta" outcome="perfilIH" update="messages"/>
+                        <p:menuitem value="Mi cuenta" outcome="perfilIH?faces-redirect=true" update="messages"/>
                     </p:submenu>
                    <p:submenu label="Administrar Libro">
-                      <p:menuitem value="Crear Libro" outcome="CrearLibroIH" update="messages"/>
-                      <p:menuitem value="Mis libros" outcome="MisLibrosIH" update="messages"/>
+                      <p:menuitem value="Crear Libro" outcome="CrearLibroIH?faces-redirect=true" update="messages"/>
+                      <p:menuitem value="Mis libros" outcome="MisLibrosIH?faces-redirect=true" update="messages"/>
                    </p:submenu>
                    <p:submenu label="Solicitudes Pendientes">
-                     <p:menuitem value="Solicitudes pendientes" outcome="SolicitudesIH"/>
+                     <p:menuitem value="Solicitudes pendientes" outcome="SolicitudesIH?faces-redirect=true"/>
                   </p:submenu>     
                   <p:submenu label="Editar cuenta">
-                     <p:menuitem value="Editar Cuenta" outcome="EditarCuentaIH" />                     
-                     
-                        
+                      <p:menuitem value="Editar Cuenta" action="EditarCuentaIH?faces-redirect=true" actionListener="#{editarUsuario.listener}">
+                          <f:attribute name="usuario" value="#{entrar.usuario}" />
+                      </p:menuitem>                    
                   </p:submenu>
                   </p:menu>
                   </h:form>  
                 </p:layoutUnit>    
                     
                 <p:layoutUnit position="center" resizable="true" size="50">
-                       <h:outputText value="Bienvenido usuario" />
+                       <h:outputText value="Bienvenido usuario #{entrar.usuario.getNombre()}" />
                        
                  </p:layoutUnit> 
                     
