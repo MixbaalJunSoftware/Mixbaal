@@ -8,6 +8,7 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.bean.ManagedProperty;
 import modelo.Libro;
 import modelo.LibroDAO;
+import modelo.Usuario;
 
 @ManagedBean
 @ViewScoped
@@ -15,6 +16,7 @@ import modelo.LibroDAO;
 public class verPublica implements Serializable {
 
     private List<Libro> libros;
+    private Usuario usuario;
        
     @PostConstruct
     public void ver() {
@@ -24,6 +26,10 @@ public class verPublica implements Serializable {
  
     public List<Libro> getLibros() {
         return libros;
+    }
+    
+    public String verUsuario(){
+        return usuario.getFotoUsr();
     }
  
 }

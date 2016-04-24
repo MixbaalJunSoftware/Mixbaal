@@ -11,6 +11,7 @@ import java.io.OutputStream;
 import java.nio.file.Files;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import org.primefaces.event.FileUploadEvent;
@@ -18,6 +19,7 @@ import org.primefaces.model.UploadedFile;
 
 @ManagedBean
 @RequestScoped
+@SessionScoped
 
 public class EditarUsuario {
 
@@ -32,6 +34,7 @@ public class EditarUsuario {
   private String facultad;//Facultad del usuario. 
   private String msn;  
   private boolean modificado;
+ 
   
   
     public String getNombre() {
@@ -96,7 +99,7 @@ public class EditarUsuario {
 
     public void setCpassword(String cpassword) {
         this.cpassword = cpassword;
-    }
+    }   
     
     public void listener(ActionEvent event){
 	usuario = (Usuario)event.getComponent().getAttributes().get("usuario");
@@ -144,14 +147,14 @@ public class EditarUsuario {
         }
     }
     
-    private final String destination= "../Web Pages/public/imagenes/";
+    private final String destination= "/home/danii/Escritorio/Ingenieria/Mixbaal/PrestaLibrosUnam/web/public/imagenes/usuarios/";
     
     public void upload (FileUploadEvent event) {
       FacesMessage msg = new FacesMessage("Success! ", event.getFile().getFileName() + " is uploaded.");
       FacesContext.getCurrentInstance().addMessage(null, msg);
       // Do what you want with the file
        try {
-         copyFile("dos" , event.getFile().getInputstream());
+         copyFile(String.valueOf(usuario.getIdusuario()), event.getFile().getInputstream());
        } catch (IOException e) {
          FacesMessage msg2 = new FacesMessage("Is NOT Succesful", event.getFile().getFileName() + " is not uploaded.");
          FacesContext.getCurrentInstance().addMessage(null, msg);
