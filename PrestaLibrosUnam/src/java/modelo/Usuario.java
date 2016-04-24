@@ -122,7 +122,9 @@ public class Usuario  implements java.io.Serializable {
         this.libros = libros;
     }
 
-
+    @Override public String toString(){
+        return this.getNombre() + this.contrasenia+this.app;
+    }
 
 
 }

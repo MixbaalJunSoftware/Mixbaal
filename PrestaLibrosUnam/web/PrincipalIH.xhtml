@@ -17,15 +17,18 @@
                     <p:growl id="messages"/>
                     <h:form>
                         <p:menubar>
+                            <p:menuitem value="PrestaLibrosUnam" action="PrincialIH?faces-redirect=true"/>
                             <f:facet name="options">
+                                
                                 <p:inputText style="margin-right:10px" placeholder="Search"/>
-                                <!--<c:if test="#{!entrar.hayUsuario()}">-->
+                                <c:if test="#{!entrar.hayUsuario()}">
                                 <p:commandButton  action="EntrarIH?faces-redirect=true" value="Entrar" icon="ui-icon-enterlink"/>
-                                <!--</c:if>
+                                </c:if>
                                 <c:if test="#{entrar.hayUsuario()}">
-                                    <h:outputText value="#{entrar.correo}" />
+                                    <p:commandLink value="#{entrar.nombre}" style="margin-right:10px" action="perfilIH"/>
+                                    
                                     <p:commandButton  action="#{entrar.salir()}" value="Salir" icon="ui-icon-enterlink" onclick="window.location.reload();"/>
-                                </c:if>-->
+                                </c:if>
                             </f:facet>
                             
                         </p:menubar>

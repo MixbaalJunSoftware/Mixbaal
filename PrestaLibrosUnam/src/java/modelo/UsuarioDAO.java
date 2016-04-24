@@ -78,6 +78,7 @@ public class UsuarioDAO extends AbstractDAO {
             List<Usuario> userList = query.list();
             tx.commit();
             if (userList!= null && !userList.isEmpty()) {
+                System.out.println(userList.get(0));
                 return userList.get(0);
             }else{
                 return null;

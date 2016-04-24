@@ -16,38 +16,42 @@ and open the template in the editor.
             <link rel="stylesheet" href="/PrestaLibrosUnam/public/css/inicio.css"/>
         </h:head>
         <h:body>
-            <section class="contenedorLogin">
+            <section class="contenedorRegistrar">
                 <h2>Agregar</h2>
                 <br/>
                 <br/>
                     <h:form class="formulario">
                         <h:panelGrid columns="3" style="margin-bottom:10px">
-                            <h:outputText value="Nombre :" />
+                            <h:outputText value="Nombre* :" />
                             <p:inputText id="counter1" value="#{registrar.nombe}">
                             </p:inputText>
                             <br/>
-                            <h:outputText value="Apellido Paterno : " />
-                            <p:inputText id="counter2" value="#{registrar.app}">
+                            <h:outputText value="Apellido Paterno* : " />
+                            <p:inputText id="counter2" value="#{registrar.app}" >
                             </p:inputText>
                             <br/>
                             <h:outputText value="Apellido Materno : " />
-                            <p:inputText id="counter3" value="#{registrar.apm}">
+                            <p:inputText id="counter3" value="#{registrar.apm}" >
                             </p:inputText>
                             <br/>
                             <h:outputText value="Contrasenia : " />
-                            <p:password id="counter4" value="#{registrar.password}" feedback="true"/>
+                            <p:password id="counter4" value="#{registrar.password}" />
                             
                             <br/>
-                            <h:outputText value="Correo : " />
-                            <p:inputText id="counter5" value="#{registrar.correo}">
+                            <h:outputText value="Correo* : " />
+                            <p:inputText id="counter5" value="#{registrar.correo}" >
+                            </p:inputText>
+                            <br/>
+                            <h:outputText value="Telefono : " />
+                            <p:inputText id="counter7" value="#{registrar.telefono}"> 
                             </p:inputText>
                             <br/>
                             <h:outputText value="Falcultad : " />
-                            <p:inputText id="counter6" value="#{registrar.facultad}">
+                            <p:inputText id="counter6" value="#{registrar.facultad}" >
                             </p:inputText>
                             <br/>
                             <p:commandButton value=" Aceptar " id="ajax" 
-                                             update="msn" action="#{registrar.Registrar()}"  styleClass="ui-priority-primary"/>
+                                             update="msn" action="#{registrar.Registrar()}" actionListener="#{registrar.showMessage()}" styleClass="ui-priority-primary"/>
                             <p:commandButton value="Cancelar" id="cancelar" action="PrincipalIH?faces-redirect=true"/>
                         </h:panelGrid>
                         <br/>
