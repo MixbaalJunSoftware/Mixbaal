@@ -144,14 +144,14 @@ public class EditarUsuario {
         }
     }
     
-    private final String destination= "/home/daniicape/Escritorio";
+    private final String destination= "../Web Pages/public/imagenes/";
     
-    public void upload2 (FileUploadEvent event) {
+    public void upload (FileUploadEvent event) {
       FacesMessage msg = new FacesMessage("Success! ", event.getFile().getFileName() + " is uploaded.");
       FacesContext.getCurrentInstance().addMessage(null, msg);
       // Do what you want with the file
        try {
-         copyFile("uno.jpg" , event.getFile().getInputstream());
+         copyFile("dos" , event.getFile().getInputstream());
        } catch (IOException e) {
          FacesMessage msg2 = new FacesMessage("Is NOT Succesful", event.getFile().getFileName() + " is not uploaded.");
          FacesContext.getCurrentInstance().addMessage(null, msg);
