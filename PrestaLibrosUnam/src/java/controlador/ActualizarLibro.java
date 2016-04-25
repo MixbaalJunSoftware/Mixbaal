@@ -7,14 +7,17 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.Serializable;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 import modelo.Libro;
 import modelo.LibroDAO;
 import modelo.Usuario;
 import modelo.UsuarioDAO;
 import org.primefaces.event.FileUploadEvent;
 
+@ManagedBean
 @SessionScoped
 
 public class ActualizarLibro implements Serializable{
@@ -47,13 +50,25 @@ public class ActualizarLibro implements Serializable{
     public void setFoto(String foto) {
         this.foto = foto;
     }
+    
+    public void listener(ActionEvent event){
+        libro = (Libro)event.getComponent().getAttributes().get("libro1");
+    }
 
-    public void actualizarLibro() {
+    public String actualizarLibro() {
         boolean modificado = false;
-        
         LibroDAO ld = new LibroDAO();
-        libro.setDescripcion(this.getDescripcion());
-        libro.setFotoLibro(this.getFoto());
+        if(!this.getDescripcion().equals("")){
+            libro.setDescripcion(this.getDescripcion());
+            modificado = true;
+        }
+        if(!this.getFoto().equals("")){
+            libro.setFotoLibro(this.getFoto());
+            modificado = true;
+        }
+        if(modificado)
+            ld.update(libro);
+        return  "MisLibrosIH?faces-redirect=true";
     }
     
     private final String destination= "/home/luis/NetBeansProjects/Mixbaal/PrestaLibrosUnam/web/public/imagenes/libros/";

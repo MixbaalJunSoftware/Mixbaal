@@ -10,12 +10,13 @@
     <h:body>
         <f:view>
             <h:form>
-                <h:outputText value="Descripcion"/>
-                <p:inputTextarea  value="#{crearLibro.descripcion}" rows="6" cols="33" />
-                <br/>
-                <h:outputText value="Foto"/>
-                <p:inputText value="#{crearLibro.foto}"/>
-                <p:commandButton value="Actualizar" action="#{crearLibro.crearLibro()}"/>
+                <h:panelGrid columns="2" cellpadding="5"> 
+                    <h:outputText value="Descripcion"/>
+                    <p:inputTextarea  value="#{actualizarLibro.descripcion}" rows="6" cols="33" />
+                    <h:outputText value="Foto"/>
+                    <p:inputText value="#{actualizarLibro.foto}"/>
+                </h:panelGrid>
+                <p:commandButton value="Actualizar" action="#{actualizarLibro.actualizarLibro}"/>
             </h:form>
         </f:view>
     </h:body>

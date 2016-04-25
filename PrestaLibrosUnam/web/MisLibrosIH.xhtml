@@ -90,8 +90,13 @@ and open the template in the editor.
                             </h:panelGrid>         
                                                           
                             </p:outputPanel>
-                             <p:button outcome="LibroIH" value="Editar"/>
-                             <p:button outcome="LibroIH" value="Eliminar"/>
+                             
+                             <p:commandButton action="ActualizarLibroIH?faces-redirect=true" value="Editar" actionListener="#{actualizarLibro.listener}">
+                                <f:attribute name="libro1" value= "#{libro}" />
+                            </p:commandButton>
+                            <p:commandButton action="#{eliminarLibro.EliminarLibro}" value="Eliminar" actionListener="#{eliminarLibro.listener}">
+                                <f:attribute name="libro1" value= "#{libro}" />
+                            </p:commandButton>
                               
                              
                          </h:panelGrid>
