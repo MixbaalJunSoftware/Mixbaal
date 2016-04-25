@@ -13,15 +13,14 @@ and open the template in the editor.
     <f:view contentType="text/html">
         <h:head>
             <title>Registro</title>
-            <link rel="stylesheet" href="/PrestaLibrosUnam/public/css/inicio.css"/>
+            <link rel="stylesheet" href="/PrestaLibrosUnam/public/css/registrar.css"/>
         </h:head>
         <h:body>
+            <h1 id="title2">Agregar</h1>
             <section class="contenedorRegistrar">
-                <h2>Agregar</h2>
-                <br/>
-                <br/>
+                
                     <h:form class="formulario">
-                        <h:panelGrid columns="3" style="margin-bottom:10px">
+                        <h:panelGrid columns="3" style="margin-bottom:10px" cellpadding="5">
                             <h:outputText value="Nombre* :" />
                             <p:inputText id="counter1" value="#{registrar.nombe}">
                             </p:inputText>

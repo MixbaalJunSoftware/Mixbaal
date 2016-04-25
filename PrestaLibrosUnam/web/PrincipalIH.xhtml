@@ -27,7 +27,7 @@
                                 <c:if test="#{entrar.hayUsuario()}">
                                     <p:commandLink value="#{entrar.usuario.getNombre()}" style="margin-right:10px" action="perfilIH"/>
                                     
-                                    <p:commandButton  action="#{entrar.salir()}" value="Salir" icon="ui-icon-enterlink" onclick="window.location.reload();"/>
+                                    <p:commandButton  action="#{entrar.salir()}" value="Salir" icon="ui-icon-enterlink" /><!--onclick="window.location.reload();"-->
                                 </c:if>
                             </f:facet>
                             

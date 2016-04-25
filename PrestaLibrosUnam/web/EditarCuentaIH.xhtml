@@ -21,15 +21,13 @@ and open the template in the editor.
                     <p:growl id="messages"/>
                     <h:form>
                         <p:menubar>
+                            <p:menuitem value="PrestaLibrosUnam" action="PrincipalIH?faces-redirect=true"/>
                             <f:facet name="options">
                                 <p:inputText style="margin-right:10px" placeholder="Search"/>
+                                <p:commandLink value="#{entrar.usuario.getNombre()}" style="margin-right:10px" action="perfilIH"/>
                                 <p:commandButton  action="#{entrar.salir()}" value="salir" icon="ui-icon-enterlink"/>
-                                <p:commandLink id="index" action="PrincipalIH">
-                                   <h:outputText value="PrestaLibrosUnam" />
-                               </p:commandLink>
-                                <p:commandLink id="perfil" action="perfilIH">
-                                   <h:outputText value="Mi perfil" />
-                               </p:commandLink>
+                                
+                                
                             </f:facet>                          
                         </p:menubar>
                     </h:form>
