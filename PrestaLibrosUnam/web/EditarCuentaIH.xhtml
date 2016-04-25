@@ -39,7 +39,7 @@ and open the template in the editor.
                 </p:layoutUnit>
                 <p:layoutUnit position="west" size = "250">
                     <h:form>
-                    <p:graphicImage value="#{entrar.usuario.getFotoUsr()}" id="fperfil" />
+                    <p:graphicImage value="#{entrar.usuario.getFotoUsr()}" id="fperfil"  style="width: 200px; height: 200px;" />
                     <p:menu>
                     <p:submenu label="Mi cuenta">
                         <p:menuitem value="Mi cuenta" outcome="perfilIH" update="messages"/>
@@ -61,14 +61,14 @@ and open the template in the editor.
                 <p:layoutUnit position="center" resizable="true" size="50">
                     <h:form>
                     <h2>Editar cuenta</h2>
-                        <p:graphicImage value="/public/imagenes/usuario.png" id="fperfil2" />
+                        <p:graphicImage value="#{entrar.usuario.getFotoUsr()}" id="fperfil2"  style="width: 200px; height: 200px;" />
                         <p:panelGrid columns="2">
                             <h:outputText value="Cambiar imagen:" />
                             
                             
                               <h:form enctype="multipart/form-data">
                                   <p:fileUpload fileUploadListener="#{editarUsuario.upload}" allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
-                                     sizeLimit="100000" value="Select Images" />
+                                     sizeLimit="1000000" value="Select Images" />
                                                                    
                             </h:form>
                         </p:panelGrid>

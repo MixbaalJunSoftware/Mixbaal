@@ -149,7 +149,7 @@ public class EditarUsuario implements Serializable{
         }
     }
     
-    private final String destination= "/home/luis/NetBeansProjects/Mixbaal/PrestaLibrosUnam/web/public/imagenes/";
+    private final String destination= "/home/danii/Escritorio/Ingenieria/Mixbaal/PrestaLibrosUnam/web/public/imagenes/";
     
     public void upload (FileUploadEvent event) {
       FacesMessage msg = new FacesMessage("Success! ", event.getFile().getFileName() + " is uploaded.");
@@ -161,6 +161,7 @@ public class EditarUsuario implements Serializable{
          FacesMessage msg2 = new FacesMessage("Is NOT Succesful", event.getFile().getFileName() + " is not uploaded.");
          FacesContext.getCurrentInstance().addMessage(null, msg);
         }
+       
     }
     
     
