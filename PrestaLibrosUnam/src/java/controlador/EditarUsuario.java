@@ -106,7 +106,7 @@ public class EditarUsuario implements Serializable{
 	usuario = (Usuario)event.getComponent().getAttributes().get("usuario");
         
     }
-   
+    
     
       
     public String editar() {
