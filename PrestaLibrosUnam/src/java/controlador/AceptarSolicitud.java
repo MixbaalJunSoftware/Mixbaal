@@ -45,17 +45,18 @@ public class AceptarSolicitud {
 	solicitud= (Solicitudes)event.getComponent().getAttributes().get("solicitud");
         usuario = (Usuario)event.getComponent().getAttributes().get("usuario");
     }
+    
     @PostConstruct
     public void verSolicitudes(){
         SolicitudesDAO s = new SolicitudesDAO();
         lsolicitud = s.findAll();
     }
     
-    public void AceptarSolicitud() {
+    public String AceptarSolicitud() {
         usuario.getSolicitudeses().remove(this.solicitud);
         solicitud.setAceptado(true);
         usuario.getSolicitudeses().add(this.solicitud);
-      
+        return "perfilIH?faces-redirect=true";
     }
 
 }
