@@ -53,4 +53,13 @@ public class SolicitudesDAO extends AbstractDAO {
     public List findAll() throws DataAccessLayerException {
         return super.findAll(Solicitudes.class);
     }
+    
+    /**
+     * Lista todos los solicituds de la base de datos
+     *
+     * @return
+     */
+    public int maxIndice() {
+        return super.maxIndice("solicitudes","idsolicitudes");
+    }
 }

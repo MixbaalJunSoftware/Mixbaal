@@ -3,6 +3,8 @@ package controlador;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.event.ActionEvent;
+import modelo.Libro;
 import modelo.Usuario;
 import modelo.UsuarioDAO;
 
@@ -15,6 +17,15 @@ public class Entrar implements Serializable{
     private String contrasenia;
     private String msn;
     private Usuario usuario;
+    private Libro libro;
+
+    public Libro getLibro() {
+        return libro;
+    }
+
+    public void setLibro(Libro libro) {
+        this.libro = libro;
+    }
     
     public String getMsn() {
         return msn;
@@ -69,6 +80,10 @@ public class Entrar implements Serializable{
         }
         this.setMsn("Error! Contraseña o correo incorrectos");
         return "EntrarIH?faces-redirect=true";
+    }
+    
+    public void listener(ActionEvent event){
+	libro = (Libro)event.getComponent().getAttributes().get("lb");
     }
 
 }

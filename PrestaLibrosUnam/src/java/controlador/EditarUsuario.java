@@ -118,7 +118,7 @@ public class EditarUsuario implements Serializable{
             }
             else{
                 this.setMsn("La contraseña no coincide");
-                return "EditarCuentaIH";
+                return "EditarCuentaIH?faces-redirect=true";
             }
         }
         else if(this.getTelefono()!= null&&!this.getTelefono().equals("")){
@@ -134,18 +134,18 @@ public class EditarUsuario implements Serializable{
             usr.update(usuario);
             System.out.print("se actualizo el usuario");
             this.setMsn("Se actualizaron tus datos correctamente");
-            return "perfilIH";    
+            return "perfilIH?faces-redirect=true";    
             
         }catch(Exception e){
             System.out.print("algo salio mal");
              this.setMsn("¡Ups! Ocurrió un error");
-            return "EditarCuentaIH"; 
+            return "EditarCuentaIH?faces-redirect=true"; 
         }
         }
         else {
             this.setMsn("No hay ningun dato para modificar");
             System.out.print("no se edito nada");
-            return "EditarCuentaIH";
+            return "EditarCuentaIH?faces-redirect=true";
         }
     }
     

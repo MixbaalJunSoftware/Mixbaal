@@ -17,7 +17,7 @@
                     <p:growl id="messages"/>
                     <h:form>
                         <p:menubar>
-                            <p:menuitem value="PrestaLibrosUnam" action="PrincialIH?faces-redirect=true"/>
+                            <p:menuitem value="PrestaLibrosUnam" action="PrincipalIH?faces-redirect=true"/>
                             <f:facet name="options">
                                 
                                 <p:inputText style="margin-right:10px" placeholder="Search"/>
@@ -25,7 +25,7 @@
                                 <p:commandButton  action="EntrarIH?faces-redirect=true" value="Entrar" icon="ui-icon-enterlink"/>
                                 </c:if>
                                 <c:if test="#{entrar.hayUsuario()}">
-                                    <p:commandLink value="#{entrar.nombre}" style="margin-right:10px" action="perfilIH"/>
+                                    <p:commandLink value="#{entrar.usuario.getNombre()}" style="margin-right:10px" action="perfilIH"/>
                                     
                                     <p:commandButton  action="#{entrar.salir()}" value="Salir" icon="ui-icon-enterlink" onclick="window.location.reload();"/>
                                 </c:if>
@@ -46,36 +46,36 @@
                                Libros disponibles
                             </f:facet>
  
-                         <h:panelGrid columns="3" style="width:50%">
-                             <p:graphicImage value="#{libro.fotoLibro}" id="foto_libro" width="200" height="200" />
-                            <p:outputPanel>
-                            <h:panelGrid columns="2" cellpadding="5">
-                               <h:outputText value="Nombre: " style="font-weight: bold"/>
-                               <h:outputText value="#{libro.nombre}" />
+                            <h:panelGrid columns="3" style="width:50%">
+                                <p:graphicImage value="#{libro.fotoLibro}" id="foto_libro" width="200" height="200" />
+                                <p:outputPanel>
+                                    <h:panelGrid columns="2" cellpadding="5">
+                                        <h:outputText value="Nombre: " style="font-weight: bold"/>
+                                        <h:outputText value="#{libro.nombre}" />
  
-                               <h:outputText value="Autor: " style="font-weight: bold"/>
-                               <h:outputText value="#{libro.autor}" />
+                                        <h:outputText value="Autor: " style="font-weight: bold"/>
+                                        <h:outputText value="#{libro.autor}" />
  
-                               <h:outputText value="Editorial: " style="font-weight: bold"/>
-                               <h:outputText value="#{libro.editorial}" />
+                                        <h:outputText value="Editorial: " style="font-weight: bold"/>
+                                        <h:outputText value="#{libro.editorial}" />
                                
-                               <h:outputText value="Genero: " style="font-weight: bold" />
-                               <h:outputText value="#{libro.genero}" />
+                                        <h:outputText value="Genero: " style="font-weight: bold" />
+                                        <h:outputText value="#{libro.genero}" />
                                
-                               <h:outputText value="País: " style="font-weight: bold" />
-                               <h:outputText value="#{libro.pais}" />
+                                        <h:outputText value="País: " style="font-weight: bold" />
+                                        <h:outputText value="#{libro.pais}" />
                                 
-                               <h:outputText value="Descripción: " style="font-weight: bold" />
-                               <h:outputText value="#{libro.descripcion}" />
-                            </h:panelGrid>         
+                                        <h:outputText value="Descripción: " style="font-weight: bold" />
+                                        <h:outputText value="#{libro.descripcion}" />
+                                    </h:panelGrid>         
                                                           
-                            </p:outputPanel>
-                             <p:button outcome="LibroIH" value="Ir a pagina del libro">
-                              
-                            </p:button>  
-                         </h:panelGrid>
-                       </p:dataScroller>
-                     </h:form>
+                                </p:outputPanel>
+                                <p:commandButton value="Ir a pagina del libro" action="LibroIH?faces-redirect=true" actionListener="#{entrar.listener}">
+                                    <f:attribute name="lb" value="#{libro}" />
+                                </p:commandButton> 
+                            </h:panelGrid>
+                        </p:dataScroller>
+                    </h:form>
                     
                 </p:layoutUnit>
                 
