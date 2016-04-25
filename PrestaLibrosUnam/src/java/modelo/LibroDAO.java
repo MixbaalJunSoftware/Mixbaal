@@ -58,4 +58,8 @@ public class LibroDAO extends AbstractDAO {
     public int maxIndice(){
         return super.maxIndice("libro", "idlibro");
     }
+    
+     public List findLibros(Long id) throws DataAccessLayerException {
+        return super.findLibros(Libro.class, id);
+    }
 }

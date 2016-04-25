@@ -87,7 +87,22 @@ public abstract class AbstractDAO {
         }
         return objects;
     }
-
+    
+    protected List findLibros(Class clazz, Long id){
+        List objects = null;
+        try{
+            startOperation();
+            Query query = session.createQuery("FROM " + clazz.getName() + " WHERE usridUsuario =" + String.valueOf(id));
+            objects = query.list();
+            tx.commit();
+        } catch(HibernateException e){
+            handleException(e);            
+        } finally {
+            HibernateFactory.close(session);
+        }
+        return objects;
+    }
+    
     protected void handleException(HibernateException e) throws DataAccessLayerException {
         HibernateFactory.rollback(tx);
         throw new DataAccessLayerException(e);
