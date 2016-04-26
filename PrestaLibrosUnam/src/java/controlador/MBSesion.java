@@ -7,8 +7,15 @@ package controlador;
 
 
 import java.io.Serializable;
+import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
+import javax.servlet.http.HttpSession;
+import modelo.Solicitudes;
+import modelo.SolicitudesDAO;
 import modelo.Usuario;
 
 /**
@@ -19,14 +26,45 @@ import modelo.Usuario;
 @ManagedBean
 @SessionScoped
 
-public class MBSesion implements Serializable {
+public class MBSesion implements Serializable{
+    
+    private FacesContext faceContext;
+    private HttpSession sesion;
+
+    public MBSesion() {
+        faceContext=FacesContext.getCurrentInstance();
+        sesion = (HttpSession) faceContext.getExternalContext().getSession(false);
+    }
+    
     
     private Usuario usuario;
+    private List<Solicitudes> lsolicitud;
 
-    /**
-     * Creates a new instance of MBSesion
-     */
-    public MBSesion() {
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public List<Solicitudes> getLsolicitud() {
+        return lsolicitud;
+    }
+
+    public void setLsolicitud(List<Solicitudes> lsolicitud) {
+        this.lsolicitud = lsolicitud;
+    }
+    
+    public void listener(ActionEvent event){
+        usuario = (Usuario)event.getComponent().getAttributes().get("usuario");
+    }
+
+    @PostConstruct
+    public void verSolicitudes(){
+        SolicitudesDAO sd = new SolicitudesDAO();
+        usuario = (Usuario)sesion.getAttribute("usuario");
+        lsolicitud = sd.pendientesUsuario(usuario.getIdusuario());
     }
     
 }

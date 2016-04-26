@@ -4,6 +4,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import modelo.Solicitudes;
 import modelo.SolicitudesDAO;
@@ -13,6 +14,7 @@ import modelo.Usuario;
 @ViewScoped
 
 public class AceptarSolicitud {
+    private  FacesContext context = FacesContext.getCurrentInstance();
     private Solicitudes solicitud;
     private Usuario usuario;
     private List<Solicitudes> lsolicitud;
@@ -46,11 +48,11 @@ public class AceptarSolicitud {
         usuario = (Usuario)event.getComponent().getAttributes().get("usuario");
     }
     
-    @PostConstruct
-    public void verSolicitudes(){
-        SolicitudesDAO s = new SolicitudesDAO();
-        lsolicitud = s.findAll();
-    }
+//    @PostConstruct
+//    public void verSolicitudes(){
+//        SolicitudesDAO sd = new SolicitudesDAO();
+//        lsolicitud = sd.pendientesUsuario(usuario.getIdusuario());
+//    }
     
     public String AceptarSolicitud() {
         usuario.getSolicitudeses().remove(this.solicitud);

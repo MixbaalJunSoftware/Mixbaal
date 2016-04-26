@@ -48,7 +48,9 @@ and open the template in the editor.
                       <p:menuitem value="Mis libros" outcome="MisLibrosIH?faces-redirect=true" update="messages"/>
                    </p:submenu>
                    <p:submenu label="Solicitudes Pendientes">
-                     <p:menuitem value="Solicitudes pendientes" outcome="SolicitudesIH?faces-redirect=true"/>
+                       <p:menuitem value="Solicitudes pendientes" action="SolicitudesIH?faces-redirect=true" actionListener="#{mBSesion.listener}">
+                           <f:attribute name="usuario" value="#{entrar.usuario}" />
+                      </p:menuitem>
                   </p:submenu>     
                   <p:submenu label="Editar cuenta">
                       <p:menuitem value="Editar Cuenta" action="EditarCuentaIH?faces-redirect=true" actionListener="#{editarUsuario.listener}">

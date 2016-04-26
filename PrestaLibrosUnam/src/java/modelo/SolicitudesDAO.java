@@ -1,6 +1,13 @@
 package modelo;
 
 import java.util.List;
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
+import org.hibernate.SQLQuery;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
 
 public class SolicitudesDAO extends AbstractDAO {
 
@@ -62,4 +69,33 @@ public class SolicitudesDAO extends AbstractDAO {
     public int maxIndice() {
         return super.maxIndice("solicitudes","idsolicitudes");
     }
+    
+    public List<Solicitudes> pendientesUsuario(int id){
+        SessionFactory factory; 
+        List<Solicitudes> solicitudes = null;
+        try{
+            factory = new Configuration().configure().buildSessionFactory();
+        }catch (Throwable ex) { 
+            System.err.println("Failed to create sessionFactory object." + ex);
+            throw new ExceptionInInitializerError(ex); 
+        }    
+        Session session = factory.openSession();
+        Transaction tx = null;
+        try{
+            tx = session.beginTransaction();
+            String sql = "SELECT * FROM solicitudes WHERE aceptado = FALSE AND libroidlibro IN (SELECT idlibro FROM libro WHERE usridusuario = "+id+")";
+            SQLQuery query = session.createSQLQuery(sql);
+            query.addEntity(Solicitudes.class);
+            solicitudes = query.list();
+            tx.commit();
+            return solicitudes;
+        }catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            return null; 
+        }finally {
+            session.close(); 
+        }  
+    }
+      
+    
 }

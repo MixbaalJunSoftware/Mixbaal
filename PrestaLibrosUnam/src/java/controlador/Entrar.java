@@ -3,7 +3,9 @@ package controlador;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
+import javax.servlet.http.HttpSession;
 import modelo.Libro;
 import modelo.Usuario;
 import modelo.UsuarioDAO;
@@ -18,7 +20,14 @@ public class Entrar implements Serializable{
     private String msn;
     private Usuario usuario;
     private Libro libro;
+    private  FacesContext faceContext;
+    private HttpSession sesion;
 
+    public Entrar(){
+        faceContext = FacesContext.getCurrentInstance();
+        sesion=(HttpSession)faceContext.getExternalContext().getSession(true);
+    }
+    
     public Libro getLibro() {
         return libro;
     }
@@ -65,6 +74,7 @@ public class Entrar implements Serializable{
     
     public String salir(){
         this.setUsuario(null);
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
         return "PrincipalIH?faces-redirect=true";
     }
     
@@ -76,6 +86,7 @@ public class Entrar implements Serializable{
             this.setMsn("");
             this.setCorreo("");
             this.setContrasenia("");
+            sesion.setAttribute("usuario", u);
             return "perfilIH?faces-redirect=true";
         }
         this.setMsn("Error! Contraseña o correo incorrectos");
