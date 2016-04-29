@@ -96,6 +96,20 @@ public class SolicitudesDAO extends AbstractDAO {
             session.close(); 
         }  
     }
-      
+     
+    public List pendientesLibro(int idLibro){
+        List<Solicitudes> objects = null;
+        try{
+            startOperation();
+            Query query = session.createQuery("FROM Solicitudes WHERE libroidlibro = " + idLibro);
+            objects = query.list();
+            tx.commit();
+        } catch(HibernateException e){
+            handleException(e);            
+        } finally {
+            HibernateFactory.close(session);
+        }
+        return objects;
+    }
     
 }

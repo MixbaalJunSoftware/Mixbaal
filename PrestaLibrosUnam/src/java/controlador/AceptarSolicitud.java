@@ -1,5 +1,6 @@
 package controlador;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -13,7 +14,7 @@ import modelo.Usuario;
 @ManagedBean
 @ViewScoped
 
-public class AceptarSolicitud {
+public class AceptarSolicitud implements Serializable{
     private  FacesContext context = FacesContext.getCurrentInstance();
     private Solicitudes solicitud;
     private Usuario usuario;
@@ -48,16 +49,18 @@ public class AceptarSolicitud {
         usuario = (Usuario)event.getComponent().getAttributes().get("usuario");
     }
     
-//    @PostConstruct
-//    public void verSolicitudes(){
-//        SolicitudesDAO sd = new SolicitudesDAO();
-//        lsolicitud = sd.pendientesUsuario(usuario.getIdusuario());
-//    }
-    
-    public String AceptarSolicitud() {
-        usuario.getSolicitudeses().remove(this.solicitud);
+    public String aceptarSolicitud() {
+        SolicitudesDAO sd = new SolicitudesDAO();
+        List<Solicitudes> solicitudes = sd.pendientesLibro(solicitud.getLibro().getIdlibro());
+        for(Solicitudes s : solicitudes){
+            if(s.getIdsolicitudes() != solicitud.getIdsolicitudes()){
+                s.getUsuario().getSolicitudeses().remove(s);
+                s.getLibro().getSolicitudeses().remove(s);
+                sd.delete(s);
+            }
+        }
         solicitud.setAceptado(true);
-        usuario.getSolicitudeses().add(this.solicitud);
+        sd.update(solicitud);
         return "perfilIH?faces-redirect=true";
     }
 

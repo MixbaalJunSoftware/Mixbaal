@@ -9,6 +9,8 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 import modelo.Libro;
 import modelo.LibroDAO;
 import modelo.Usuario;
@@ -25,6 +27,15 @@ public class MisLibros implements Serializable{
     private List<Libro> libros;
     private Usuario usuario;
     
+    private FacesContext faceContext;
+    private HttpSession sesion;
+
+    public MisLibros() {
+        faceContext=FacesContext.getCurrentInstance();
+        sesion = (HttpSession) faceContext.getExternalContext().getSession(false);
+    }
+    
+    
     public List<Libro> getLibros() {
         return libros;
     }
@@ -32,8 +43,8 @@ public class MisLibros implements Serializable{
     @PostConstruct
     public void misLibros() {
         LibroDAO lib = new LibroDAO();
-        //libros = lib.findLibros(new Long (usuario.getIdusuario()));
-        libros = lib.findLibros(new Long (0));
+        usuario = (Usuario)sesion.getAttribute("usuario");
+        libros = lib.findLibros(new Long (usuario.getIdusuario()));
     }
     
 }
