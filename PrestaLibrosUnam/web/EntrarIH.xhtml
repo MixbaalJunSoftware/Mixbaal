@@ -17,7 +17,7 @@
                 
             <h:form class="formulario2">
                 <h:panelGrid columns="3">
-                    <h:outputText value="Usuario :" id="titulo"/>
+                    <h:outputText value="Correo :" id="titulo"/>
                     <p:inputText pt:placeholder="Usuario" value="#{entrar.correo}"/>
                     <br/>
                     <h:outputText value="Contraseña : " />
@@ -32,6 +32,8 @@
             </h:form>
             <h:form>
                 <p:commandLink action="PrincipalIH?faces-redirect=true" value="volver"/>
+                <br/>
+                <p:commandLink action="ContraseniaOlvidadaIH?faces-redirect=true" value="¿olvidaste tu contraseña?"/>
             </h:form>
                 
         </section>

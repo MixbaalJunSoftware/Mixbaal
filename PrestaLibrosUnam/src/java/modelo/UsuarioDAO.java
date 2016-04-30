@@ -2,6 +2,7 @@ package modelo;
 
 import java.util.List;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -95,5 +96,19 @@ public class UsuarioDAO extends AbstractDAO {
         return super.maxIndice("usuario","idusuario");
     }
     
+    public Usuario findCorreo(String correo){
+        Usuario u = null;
+        try{
+            startOperation();
+            Query query = session.createQuery("FROM Usuario WHERE correo  = \'" +correo+"\'");
+            u =(Usuario)query.uniqueResult();
+            tx.commit();
+        } catch(HibernateException e){
+            handleException(e);            
+        } finally {
+            HibernateFactory.close(session);
+        }
+        return u;
+    }
     
 }
