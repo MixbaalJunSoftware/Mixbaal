@@ -22,29 +22,31 @@
                     </p:panelGrid>
                 </h:form>-->
                 <h:form>
-                <p:growl id="messages" showDetail="true" />
-                <h:panelGrid columns="2" cellpadding="5">    
-                    <h:outputText value="Titulo"/>
-                    <p:inputText value="#{crearLibro.nombre}"/>
-                    <h:outputText value="Autor"/>
-                    <p:inputText value="#{crearLibro.autor}"/>
-                    <h:outputText value="Editorial"/>
-                    <p:inputText value="#{crearLibro.editorial}"/>
-                    <h:outputText value="Genero"/>
-                    <p:inputText value="#{crearLibro.genero}"/>
-                    <h:outputText value="Pais"/>
-                    <p:inputText value="#{crearLibro.pais}"/>
-                    <h:outputText value="Descripcion"/>
-                    <p:inputTextarea  value="#{crearLibro.descripcion}" rows="6" cols="33" />
-                    <h:outputText value="Foto"/>
-                    <p:inputText value="#{crearLibro.foto}"/>
-                </h:panelGrid>
-                <br/>
-                <p:commandButton value="Crear" action="#{crearLibro.crearLibro()}" actionListener="#{crearLibro.listener}" update="msn">
-                    <f:attribute name="usuario" value="#{entrar.usuario}" />
-                </p:commandButton>
-                <p:commandButton value="volver" action="perfilIH?faces-redirect=true"/>
-                <h:outputText id="msn" value="#{crearLibro.msn}"/>
+                    <p:growl id="messages" showDetail="true" />
+                    <h:panelGrid columns="2" cellpadding="1">    
+                        <h:outputText value="Titulo"/>
+                        <p:inputText value="#{crearLibro.nombre}"/>
+                        <h:outputText value="Autor"/>
+                        <p:inputText value="#{crearLibro.autor}"/>
+                        <h:outputText value="Editorial"/>
+                        <p:inputText value="#{crearLibro.editorial}"/>
+                        <h:outputText value="Genero"/>
+                        <p:inputText value="#{crearLibro.genero}"/>
+                        <h:outputText value="Pais"/>
+                        <p:inputText value="#{crearLibro.pais}"/>
+                        <h:outputText value="Descripcion"/>
+                        <p:inputTextarea  value="#{crearLibro.descripcion}" rows="6" cols="33" />
+                        <h:outputText value="Foto"/>
+                        <p:inputText value="#{crearLibro.foto}"/>
+                        <h:outputText id="msn" value="#{crearLibro.msn}"/>
+                        <p:growl id="growl" showDetail="true" sticky="true" />
+                    </h:panelGrid>
+                    <br/>
+                    <p:commandButton value="Crear" action="#{crearLibro.crearLibro()}" actionListener="#{crearLibro.listener}" update="messages">
+                        <f:attribute name="usuario" value="#{entrar.usuario}" />
+                    </p:commandButton>
+                    <p:commandButton value="volver" action="perfilIH?faces-redirect=true"/>
+                    <br/>
                 </h:form>
             </p:panel>
         </h:form>

@@ -1,10 +1,11 @@
 package controlador;
 
+import java.io.Serializable;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import modelo.Libro;
 import modelo.LibroDAO;
@@ -14,9 +15,9 @@ import modelo.UsuarioDAO;
 import modelo.Usuario;
 
 @ManagedBean
-@RequestScoped
+@ViewScoped
 
-public class SolicitarPrestamo {
+public class SolicitarPrestamo implements Serializable{
 
     private Libro libro;
     private Usuario usuario;
@@ -42,6 +43,7 @@ public class SolicitarPrestamo {
 	libro = (Libro)event.getComponent().getAttributes().get("libro");
         usuario = (Usuario)event.getComponent().getAttributes().get("usuario");
     }
+    
   
 
     public String SolicitarPrestamo() {
@@ -50,6 +52,11 @@ public class SolicitarPrestamo {
         UsuarioDAO ud = new UsuarioDAO();
         Solicitudes solicitud = new Solicitudes();
         Date date = new Date();
+        if(sd.solicitudUsuarioLibro(usuario.getIdusuario(),libro.getIdlibro()) != null){
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage("ERROR!", "Ya has solicitado este libro antes") );
+            return "";
+        }
         solicitud.setIdsolicitudes(sd.maxIndice());
         solicitud.setUsuario(usuario);
         solicitud.setLibro(libro);

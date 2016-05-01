@@ -112,4 +112,19 @@ public class SolicitudesDAO extends AbstractDAO {
         return objects;
     }
     
+    public Solicitudes solicitudUsuarioLibro(int idUsuario,int idLibro){
+        Solicitudes s = null;
+        try{
+            startOperation();
+            Query query = session.createQuery("FROM Solicitudes  WHERE libroidlibro = "+idLibro+" AND usridusuario = "+idUsuario);
+            s = (Solicitudes) query.uniqueResult();
+            tx.commit();
+        } catch(HibernateException e){
+            handleException(e);            
+        } finally {
+            HibernateFactory.close(session);
+        }
+        return s;
+    }
+    
 }

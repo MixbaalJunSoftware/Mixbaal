@@ -1,8 +1,11 @@
 package controlador;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
+import modelo.DataAccessLayerException;
 import modelo.Libro;
 import modelo.LibroDAO;
 
@@ -28,8 +31,14 @@ public class EliminarLibro {
 
     public String EliminarLibro() {
         LibroDAO ld = new LibroDAO();
-        ld.delete(libro);
-        return "perfilIH?faces-redirect=true";
+        FacesContext context = FacesContext.getCurrentInstance();
+        try{
+            ld.delete(libro);
+            return "MisLibrosIH?faces-redirect=true";
+        }catch(DataAccessLayerException dale){            
+            context.addMessage(null, new FacesMessage("ERROR!", "El libro no puede ser eliminado. Aun tiene solicitudes pendientes") );
+            return "";
+        }
     }
 
 }

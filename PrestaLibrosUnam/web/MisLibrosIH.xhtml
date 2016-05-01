@@ -61,15 +61,16 @@ and open the template in the editor.
                     <p:layoutUnit position="center" resizable="true" size="50">
                        
                        <h:form>
-                           <p:dataScroller value="#{misLibros.libros}" var="libro" chunkSize="10">
+                           <p:growl id="growl" showDetail="true" sticky="true" />
+                           <p:dataScroller value="#{misLibros.libros}" var="libro">
                             <f:facet name="header">
                                Mis libros
                             </f:facet>
- 
-                         <h:panelGrid columns="4" style="width:70%">
-                             <p:graphicImage value="#{libro.fotoLibro}" id="foto_libro" width="200" height="200" />
+                         
+                         <h:panelGrid columns="5" style="width:70%">   
+                            <p:graphicImage value="#{libro.fotoLibro}" id="foto_libro" width="200" height="200" />
                             <p:outputPanel>
-                            <h:panelGrid columns="2" cellpadding="5">
+                            <h:panelGrid columns="2" cellpadding="3">
                                <h:outputText value="Nombre: " style="font-weight: bold"/>
                                <h:outputText value="#{libro.nombre}" />
  
@@ -78,23 +79,14 @@ and open the template in the editor.
  
                                <h:outputText value="Editorial: " style="font-weight: bold"/>
                                <h:outputText value="#{libro.editorial}" />
-                               
-                               <h:outputText value="Genero: " style="font-weight: bold" />
-                               <h:outputText value="#{libro.genero}" />
-                               
-                               <h:outputText value="País: " style="font-weight: bold" />
-                               <h:outputText value="#{libro.pais}" />
-                                
-                               <h:outputText value="Descripción: " style="font-weight: bold" />
-                               <h:outputText value="#{libro.descripcion}" />
                             </h:panelGrid>         
                                                           
                             </p:outputPanel>
-                             
+                             <p:growl id="growl" showDetail="true" sticky="true" />
                              <p:commandButton action="ActualizarLibroIH?faces-redirect=true" value="Editar" actionListener="#{actualizarLibro.listener}">
                                 <f:attribute name="libro1" value= "#{libro}" />
                             </p:commandButton>
-                            <p:commandButton action="#{eliminarLibro.EliminarLibro}" value="Eliminar" actionListener="#{eliminarLibro.listener}">
+                            <p:commandButton  update="growl" action="#{eliminarLibro.EliminarLibro}" value="Eliminar" actionListener="#{eliminarLibro.listener}" >
                                 <f:attribute name="libro1" value= "#{libro}" />
                             </p:commandButton>
                               

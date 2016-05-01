@@ -123,9 +123,17 @@ public class CrearLibro {
         libro.setPais(this.getPais());
         libro.setFotoLibro(this.getFoto());
         libro.setUsuario(usuario);
-        this.setMsn("Libro Creado Correctamente");
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage("Exito", "El libro Se creó correctamente") );
+        nombre="";
+        editorial="";
+        autor="";
+        descripcion="";
+        genero="";
+        pais="";
+        foto="";
         ld.save(libro);
-        return "CrearLibroIH?faces-redirect=true";
+        return "";
     }
     
     private final String destination= "/home/luis/NetBeansProjects/Mixbaal/PrestaLibrosUnam/web/public/imagenes/libros/";

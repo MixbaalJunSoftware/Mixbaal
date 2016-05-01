@@ -51,16 +51,25 @@ public class AceptarSolicitud implements Serializable{
     
     public String aceptarSolicitud() {
         SolicitudesDAO sd = new SolicitudesDAO();
+        Mail m = new Mail();
+        String Subject = "Solicitud Rechazada";
+        String Mesage;
         List<Solicitudes> solicitudes = sd.pendientesLibro(solicitud.getLibro().getIdlibro());
         for(Solicitudes s : solicitudes){
             if(s.getIdsolicitudes() != solicitud.getIdsolicitudes()){
                 s.getUsuario().getSolicitudeses().remove(s);
                 s.getLibro().getSolicitudeses().remove(s);
+                Mesage = "Lo sentimos, su solicitud para el libro" + solicitud.getLibro().getNombre()+ "ha sido rechazada";
+                m.sendMail(Subject, Mesage, s.getUsuario().getCorreo());
                 sd.delete(s);
             }
         }
         solicitud.setAceptado(true);
         sd.update(solicitud);
+        Subject = "Solicitud Aceptada";
+        Mesage = "Tu solicitud de prestamos para el libro " + solicitud.getLibro().getNombre()+" ha sido aceptada\n"+
+                         "para cualquier aclaración contacta al prestador en el correo "+solicitud.getLibro().getUsuario().getCorreo(); 
+        m.sendMail(Subject, Mesage, solicitud.getUsuario().getCorreo());
         return "perfilIH?faces-redirect=true";
     }
 
