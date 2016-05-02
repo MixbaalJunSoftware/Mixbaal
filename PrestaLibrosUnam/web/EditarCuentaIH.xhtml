@@ -18,7 +18,7 @@ and open the template in the editor.
     <h:body>
         <p:layout fullPage="true">
                 <p:layoutUnit position="north" size="50"></p:layoutUnit>
-                    <p:growl id="messages"/>
+                    
                     <h:form>
                         <p:menubar>
                             <p:menuitem value="PrestaLibrosUnam" action="PrincipalIH?faces-redirect=true"/>
@@ -66,13 +66,14 @@ and open the template in the editor.
                             
                               <h:form enctype="multipart/form-data">
                                   <p:fileUpload fileUploadListener="#{editarUsuario.upload}" allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
-                                     sizeLimit="1000000" value="Select Images" />
+                                     sizeLimit="1000000" value="Select Images"/>
                                                                    
                             </h:form>
                         </p:panelGrid>
                         </h:form>   
                     
-                        <h:form>                         
+                        <h:form> 
+                        
                         <h:outputText value="Escribe en los campos que quieras modificar"/>
                        <p:panelGrid columns="2">
                             <h:outputText value="Contraseña:" />
@@ -80,20 +81,27 @@ and open the template in the editor.
                             <h:outputText value="Confirmar contraseña:" />
                             <p:password id="ccontraseña" value="#{editarUsuario.cpassword}" />
                             <h:outputText value="Telefono:" />
-                            <p:inputText id="tel" value="#{editarUsuario.telefono}" />
+                            <p:inputText id="phone" value="#{editarUsuario.telefono}"/>
                             <h:outputText value="Facultad:" />
                             <p:inputText id="fac" value="#{editarUsuario.facultad}" />
-                            
+                            <p:growl id="growl" showDetail="true" />
                             </p:panelGrid>                        
-                        <p:commandButton  action="#{editarUsuario.editar}" value="Aceptar" actionListener="#{editarUsuario.listener}">
+                        <p:commandButton  action="#{editarUsuario.editar}" value="Aceptar" actionListener="#{editarUsuario.listener}" update="growl">
                             <f:attribute name="usuario" value="#{entrar.usuario}" />
+                            <p:confirm header="Confirmacion" message="¿Tus datos son correctos?" icon="ui-icon-alert" />
                         </p:commandButton>
-                        <p:commandButton  action="#{eliminarUsuario.eliminar()}" value="Eliminar cuenta" actionListener="#{eliminarUsuario.listener}">
+                        <p:commandButton  action="#{eliminarUsuario.eliminar()}" value="Eliminar cuenta" actionListener="#{eliminarUsuario.listener}" update="growl">
                             <f:attribute name="usuario" value="#{entrar.usuario}" />
+                            <p:confirm header="Confirmacion" message="¿Estas seguro que deseas eliminar tu cuenta?" icon="ui-icon-alert" />
                         </p:commandButton>
+                         
+                         <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                           <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                           <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                         </p:confirmDialog>
                         
                         <p:commandButton  action="perfilIH" value="Cancelar"/>
-                        <h:outputText id="msn" value="#{editarUsuario.msn}" />
+                        
                         </h:form>
                  </p:layoutUnit>
               </p:layout>

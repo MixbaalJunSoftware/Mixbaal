@@ -2,8 +2,11 @@ package controlador;
 
 import modelo.Usuario;
 import modelo.UsuarioDAO;
+import controlador.Entrar;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
 @ManagedBean
@@ -13,6 +16,7 @@ public class EliminarUsuario {
 
   public Usuario usuario;
   private String msn;
+  
   
    public String getMsn() {
         return msn;
@@ -39,11 +43,19 @@ public class EliminarUsuario {
       try{
           usr.delete(usuario);
           System.out.print("Se elimino correctamente");
-          return "PrincipalIH";
+          this.setMsn("Se elimino correctamente el usuario");
+         FacesMessage mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "Usuario eliminado", "Hasta luego!");
+         FacesContext.getCurrentInstance().addMessage(null, mensaje);
+    
+          Entrar en = new Entrar();
+          return en.salir();          
       }catch(Exception e){
           this.setMsn("¡UPS! Ocurrio un error, vuelve a intentarlo");
           System.out.print("Ocurrio un error");
-          return "EditarCuentaIH";
+          FacesContext context = FacesContext.getCurrentInstance();
+          context.addMessage(null, new FacesMessage("Ups", "Ocurrio un error") );
+          context.addMessage(null, new FacesMessage("Alerta", "Tienes libros registrados y/o solicitudes pendientes") );
+          return "";
       }
   }
 

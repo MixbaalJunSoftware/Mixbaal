@@ -134,22 +134,35 @@ public class EditarUsuario implements Serializable{
             usr.update(usuario);
             System.out.print("se actualizo el usuario");
             this.setMsn("Se actualizaron tus datos correctamente");
-            return "perfilIH?faces-redirect=true";    
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage("Exito", "Se actualizaron los datos correctamente") );
+            password = "";
+            cpassword = "";
+            telefono = "";
+            facultad = "";
+            return "perfilIH?faces-redirect=true";   
+           // return "";
             
         }catch(Exception e){
             System.out.print("algo salio mal");
              this.setMsn("¡Ups! Ocurrió un error");
-            return "EditarCuentaIH?faces-redirect=true"; 
+             FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage("Ups", "Ocurrio un error, vuelve a intentarlo") );
+            //return "EditarCuentaIH?faces-redirect=true"; 
+            return "";
         }
         }
         else {
             this.setMsn("No hay ningun dato para modificar");
             System.out.print("no se edito nada");
-            return "EditarCuentaIH?faces-redirect=true";
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage("Ups", "No hay ningun dato por modificar") );
+            //return "EditarCuentaIH?faces-redirect=true";
+            return "";
         }
     }
     
-    private final String destination= "/home/luis/NetBeansProjects/Mixbaal/PrestaLibrosUnam/web/public/imagenes/";
+    private final String destination= "/home/danii/Escritorio/Ingenieria/Mixbaal/PrestaLibrosUnam/web/public/imagenes/";
     
     public void upload (FileUploadEvent event) {
       FacesMessage msg = new FacesMessage("Success! ", event.getFile().getFileName() + " is uploaded.");
@@ -157,9 +170,11 @@ public class EditarUsuario implements Serializable{
       // Do what you want with the file
        try {
          copyFile(String.valueOf(usuario.getIdusuario()), event.getFile().getInputstream());
+         
        } catch (IOException e) {
          FacesMessage msg2 = new FacesMessage("Is NOT Succesful", event.getFile().getFileName() + " is not uploaded.");
          FacesContext.getCurrentInstance().addMessage(null, msg);
+        
         }
        
     }
@@ -180,8 +195,16 @@ public class EditarUsuario implements Serializable{
       out.flush();
       out.close();
       System.out.println("New file created!");
+      redirige(true);
       } catch (IOException e) {
          System.out.println(e.getMessage());
+         redirige(false);
       }
-    }    
+    } 
+    
+    public String redirige(boolean bool){
+        if (bool)
+            return "perfilIH?faces-redirect=true"; 
+         return "EditarCuentaIH?faces-redirect=true";            
+    }
 }

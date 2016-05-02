@@ -65,7 +65,39 @@ and open the template in the editor.
                     
                 <p:layoutUnit position="center" resizable="true" size="50">
                        <h:outputText value="Bienvenido usuario #{entrar.usuario.getNombre()}" />
-                       
+                       <br/>
+                        <p:graphicImage value="#{entrar.usuario.getFotoUsr()}" id="fperfil"  style="width: 200px; height: 200px;" />
+                      <br/>
+                      <br/>
+                      <br/>
+                        <h:outputText value="Nombre:"/>
+                        <br/>
+                       <h:outputText value="#{entrar.usuario.getNombre()}" />
+                       <br/>
+                       <br/>
+                       <h:outputText value="Apellido paterno:"/>
+                       <br/>
+                       <h:outputText value="#{entrar.usuario.getApp()}" />
+                       <br/>
+                       <br/>
+                       <h:outputText value="Apellido materno:"/>
+                       <br/>
+                       <h:outputText value="#{entrar.usuario.getApm()}" />
+                       <br/>
+                       <br/>
+                       <h:outputText value="Correo:"/>
+                       <br/>
+                       <h:outputText value="#{entrar.usuario.getCorreo()}" />
+                       <br/>
+                       <br/>
+                       <h:outputText value="Facultad:"/>
+                       <br/>
+                       <h:outputText value="#{entrar.usuario.getFacultad()}" /> 
+                       <br/>
+                       <br/>
+                       <h:outputText value="Telefono:"/>
+                       <br/>
+                       <h:outputText value="#{entrar.usuario.getTelefono()}" /> 
                  </p:layoutUnit> 
                     
                                       
