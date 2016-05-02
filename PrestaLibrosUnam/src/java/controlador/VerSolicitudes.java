@@ -26,12 +26,12 @@ import modelo.Usuario;
 @ManagedBean
 @SessionScoped
 
-public class MBSesion implements Serializable{
+public class VerSolicitudes implements Serializable{
     
     private FacesContext faceContext;
     private HttpSession sesion;
 
-    public MBSesion() {
+    public VerSolicitudes() {
         faceContext=FacesContext.getCurrentInstance();
         sesion = (HttpSession) faceContext.getExternalContext().getSession(false);
     }

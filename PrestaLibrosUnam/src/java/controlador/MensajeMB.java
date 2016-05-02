@@ -45,7 +45,7 @@ public class MensajeMB implements Serializable {
         Usuario u = ud.findCorreo(correo);
         if(u == null){
             msn = "Error, Ese correo No está registrado";
-            return "ContraseniaOlvidadaIH?faces-redirect=true";
+            return "";
         }
         String asunto = "Recuperar contraseña";
         String mensaje = "Su contraseña es:\n"+u.getContrasenia();

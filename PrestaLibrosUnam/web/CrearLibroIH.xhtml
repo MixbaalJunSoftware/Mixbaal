@@ -25,24 +25,24 @@
                     <p:growl id="messages" showDetail="true" />
                     <h:panelGrid columns="2" cellpadding="1">    
                         <h:outputText value="Titulo"/>
-                        <p:inputText value="#{crearLibro.nombre}"/>
+                        <p:inputText id="titulo" value="#{crearLibro.nombre}" required="true"/>
                         <h:outputText value="Autor"/>
-                        <p:inputText value="#{crearLibro.autor}"/>
+                        <p:inputText id="autor" value="#{crearLibro.autor}" required="true"/>
                         <h:outputText value="Editorial"/>
-                        <p:inputText value="#{crearLibro.editorial}"/>
+                        <p:inputText id="editorial" value="#{crearLibro.editorial}" required="true"/>
                         <h:outputText value="Genero"/>
-                        <p:inputText value="#{crearLibro.genero}"/>
+                        <p:inputText id="genero" value="#{crearLibro.genero}" required="true"/>
                         <h:outputText value="Pais"/>
-                        <p:inputText value="#{crearLibro.pais}"/>
+                        <p:inputText id="pais" value="#{crearLibro.pais}" required="true"/>
                         <h:outputText value="Descripcion"/>
                         <p:inputTextarea  value="#{crearLibro.descripcion}" rows="6" cols="33" />
                         <h:outputText value="Foto"/>
-                        <p:inputText value="#{crearLibro.foto}"/>
+                        <p:inputText id="foto_libro" value="#{crearLibro.foto}" required="true"/>
                         <h:outputText id="msn" value="#{crearLibro.msn}"/>
-                        <p:growl id="growl" showDetail="true" sticky="true" />
                     </h:panelGrid>
                     <br/>
-                    <p:commandButton value="Crear" action="#{crearLibro.crearLibro()}" actionListener="#{crearLibro.listener}" update="messages">
+                    <p:growl id="growl" showDetail="true" sticky="true" />
+                    <p:commandButton value="Crear" action="#{crearLibro.crearLibro()}" actionListener="#{crearLibro.listener}" update="growl">
                         <f:attribute name="usuario" value="#{entrar.usuario}" />
                     </p:commandButton>
                     <p:commandButton value="volver" action="perfilIH?faces-redirect=true"/>

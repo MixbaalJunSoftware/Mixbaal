@@ -87,7 +87,7 @@ public class Entrar implements Serializable{
             this.setCorreo("");
             this.setContrasenia("");
             sesion.setAttribute("usuario", u);
-            return "perfilIH?faces-redirect=true";
+            return "PrincipalIH?faces-redirect=true";
         }
         this.setMsn("Error! Contraseña o correo incorrectos");
         return "EntrarIH?faces-redirect=true";
@@ -97,4 +97,10 @@ public class Entrar implements Serializable{
 	libro = (Libro)event.getComponent().getAttributes().get("lb");
     }
 
+    public boolean esMiLibro(){
+        if(usuario == null)
+            return true;
+        return libro.getUsuario().getIdusuario() == usuario.getIdusuario();
+    }
+    
 }

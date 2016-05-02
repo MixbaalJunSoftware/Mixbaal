@@ -28,7 +28,7 @@
                     <h:outputText value="#{entrar.libro.getPais()}" id="pais1" />
                     <h:outputText value="Descripcion :" id="descipcion"/>
                     <h:outputText value="#{entrar.libro.getDescripcion()}" id="descipcion1"/>
-                    <p:commandButton value="solicitar" action="#{solicitarPrestamo.SolicitarPrestamo()}" update = "growl" 
+                    <p:commandButton  disabled="#{entrar.esMiLibro()}" value="solicitar" action="#{solicitarPrestamo.SolicitarPrestamo()}" update = "growl" 
                                      actionListener="#{solicitarPrestamo.listener}">
                         <f:attribute name="libro" value="#{entrar.libro}" />
                         <f:attribute name="usuario" value="#{entrar.usuario}" />

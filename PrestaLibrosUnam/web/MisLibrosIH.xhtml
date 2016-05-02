@@ -88,9 +88,12 @@ and open the template in the editor.
                             </p:commandButton>
                             <p:commandButton  update="growl" action="#{eliminarLibro.EliminarLibro}" value="Eliminar" actionListener="#{eliminarLibro.listener}" >
                                 <f:attribute name="libro1" value= "#{libro}" />
+                                <p:confirm header="Confirmación" message="¿Seguro desea eliminar el libro?" icon="ui-icon-alert" />
                             </p:commandButton>
-                              
-                             
+                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                            </p:confirmDialog>
                          </h:panelGrid>
                        </p:dataScroller>
                      </h:form>

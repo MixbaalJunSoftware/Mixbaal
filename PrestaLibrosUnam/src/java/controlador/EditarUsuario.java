@@ -122,11 +122,11 @@ public class EditarUsuario implements Serializable{
                 return "";
             }
         }
-        else if(this.getTelefono()!= null&&!this.getTelefono().equals("")){
+        if(this.getTelefono()!= null&&!this.getTelefono().equals("")){
                 usuario.setTelefono(this.getTelefono());
                 modificado = true;
         }
-        else if (this.getFacultad()!=null&&!this.getFacultad().equals("")){
+        if (this.getFacultad()!=null&&!this.getFacultad().equals("")){
                usuario.setFacultad(this.getFacultad());
                modificado = true;
         }
@@ -163,7 +163,7 @@ public class EditarUsuario implements Serializable{
         }
     }
     
-    private final String destination= "/home/danii/Escritorio/Ingenieria/Mixbaal/PrestaLibrosUnam/web/public/imagenes/";
+    private final String destination= "/home/luis/NetBeansProjects/Mixbaal/PrestaLibrosUnam/web/public/imagenes/";
     
     public void upload (FileUploadEvent event) {
       FacesMessage msg = new FacesMessage("Success! ", event.getFile().getFileName() + " is uploaded.");

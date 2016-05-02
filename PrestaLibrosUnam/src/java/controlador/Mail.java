@@ -23,8 +23,8 @@ import javax.mail.internet.MimeMessage;
 public class Mail{
 
     public void sendMail(String Subject,String Mensage, String To) {
-        String Username = "bancaperro";
-        String PassWord = "SWEETACM1PT";
+        String Username = "prestalibrosunam";
+        String PassWord = "Mixbaal1234";
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");

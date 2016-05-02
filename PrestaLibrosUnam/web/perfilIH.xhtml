@@ -33,13 +33,13 @@ and open the template in the editor.
                         </p:menubar>
                     </h:form>
                     
-                <p:layoutUnit id="footer" position="south" size="50">
+                <!--<p:layoutUnit id="footer" position="south" size="50">
                     
-                </p:layoutUnit>
-                <p:layoutUnit position="west" size = "250">
+                </p:layoutUnit>-->
+                <p:layoutUnit position="west" size = "270">
                     <h:form>
                     
-                        <p:graphicImage value="#{entrar.usuario.getFotoUsr()}" id="fperfil"  style="width: 200px; height: 200px;" />
+                        <p:graphicImage value="#{entrar.usuario.getFotoUsr()}" id="fperfil"  style="width: 150px; height: 150px;" />
                     
                     <p:menu>
                     <p:submenu label="Mi cuenta">
@@ -50,7 +50,7 @@ and open the template in the editor.
                       <p:menuitem value="Mis libros" outcome="MisLibrosIH?faces-redirect=true" update="messages"/>
                    </p:submenu>
                    <p:submenu label="Solicitudes Pendientes">
-                       <p:menuitem value="Solicitudes pendientes" action="SolicitudesIH?faces-redirect=true" actionListener="#{mBSesion.listener}">
+                       <p:menuitem value="Solicitudes pendientes" action="SolicitudesIH?faces-redirect=true" actionListener="#{verSolicitudes.listener}">
                            <f:attribute name="usuario" value="#{entrar.usuario}" />
                       </p:menuitem>
                   </p:submenu>     
