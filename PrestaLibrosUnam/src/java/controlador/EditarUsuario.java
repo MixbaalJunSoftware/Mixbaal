@@ -117,8 +117,9 @@ public class EditarUsuario implements Serializable{
                 modificado = true;
             }
             else{
-                this.setMsn("La contraseña no coincide");
-                return "EditarCuentaIH?faces-redirect=true";
+                FacesContext context = FacesContext.getCurrentInstance();
+                context.addMessage(null, new FacesMessage("Error", "La contraseña no coincide") );
+                return "";
             }
         }
         else if(this.getTelefono()!= null&&!this.getTelefono().equals("")){

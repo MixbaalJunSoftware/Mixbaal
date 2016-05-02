@@ -1,9 +1,11 @@
 package controlador;
 
+import javax.faces.application.FacesMessage;
 import modelo.Usuario;
 import modelo.UsuarioDAO;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 
 @ManagedBean
 @RequestScoped
@@ -19,6 +21,7 @@ public class Registrar {
     private String app;//Apellido paterno del usuario.
     private String apm;//Apellido materno del usuario.
     private String password;//contrasenia del usuario.
+    private String cpassword;
     private int telefono;//Teleffono del usuario.
     private String facultad;//Facultad del usuario. 
     private String correo;//Correo del usuario.
@@ -138,33 +141,63 @@ public class Registrar {
         this.facultad = facultad;
     }
     
+    /**
+     * 
+     * @return La confirmacion de contraseña de el usuario
+     */
+    public String getCpassword() {
+        return cpassword;
+    }
+    /**
+     * 
+     * @param cpassword la confirmacion de contraseña. 
+     */
+    public void setCpassword(String cpassword) {
+        this.cpassword = cpassword;
+    }
+    
     
     
   public String Registrar() {
         usuario = new Usuario();
         UsuarioDAO user = new UsuarioDAO();
-        try{
-             usuario.setNombre(this.getNombe());
-             usuario.setApp(this.getApp());
-             usuario.setApm(this.getApm());
-             usuario.setContrasenia(this.getPassword());
-             usuario.setFacultad(this.getFacultad());
-             usuario.setFacultad(this.getFacultad());
-             usuario.setCorreo(this.getCorreo());
-             usuario.setFotoUsr("/public/imagenes/usuario.png");
-             usuario.setIdusuario(user.maxIndice());
-             usuario.setTelefono(""+this.getTelefono());
-             user.save(usuario);
-             System.out.printf("Todo Bien");
-             this.setMsn("todo Bien");
+        if (this.getPassword() != null&&!this.getPassword().equals("")){  
+           if(this.getPassword().equals(this.getCpassword())){
+             try{
+                 usuario.setNombre(this.getNombe());
+                 usuario.setApp(this.getApp());
+                 usuario.setApm(this.getApm());
+                 usuario.setContrasenia(this.getPassword());
+                usuario.setFacultad(this.getFacultad());
+                usuario.setFacultad(this.getFacultad());
+                usuario.setCorreo(this.getCorreo());
+                usuario.setFotoUsr("/public/imagenes/usuario.png");
+                usuario.setIdusuario(user.maxIndice());
+                usuario.setTelefono(""+this.getTelefono());
+                user.save(usuario);
+                System.out.printf("Todo Bien");
+                this.setMsn("todo Bien");
              
-             return "PrincipalIH?faces-redirect=true";
-        }catch(Exception e){
-            this.setMsn("Algo Fallo");
+                return "PrincipalIH?faces-redirect=true";
+           }catch(Exception e){
+               this.setMsn("Algo Fallo");
             
-            System.out.printf("Algo fallo");
-            return "registrarIH?faces-redirect=true";
+               System.out.printf("Algo fallo");
+               return "registrarIH?faces-redirect=true";
+           }
+         }
+           else {  
+           FacesContext context = FacesContext.getCurrentInstance();
+           context.addMessage(null, new FacesMessage("Error", "Las contraseñas no coinciden") );
+           return "";
+           }
         }
+        else {
+            FacesContext context = FacesContext.getCurrentInstance();
+           context.addMessage(null, new FacesMessage("Error", "Contraseña inválida") );
+           return "";
+        }
+  
   }
   
   
