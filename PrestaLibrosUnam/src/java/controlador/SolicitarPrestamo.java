@@ -68,6 +68,7 @@ public class SolicitarPrestamo implements Serializable{
         Mail m = new Mail();
         String Subject = "Libro Solicitado";
         String Mensage = "Se ha solicitado tu libro" + libro.getNombre();
+        System.out.println(libro.getUsuario().getCorreo());
         m.sendMail(Subject, Mensage, libro.getUsuario().getCorreo());
         return "PrincipalIH?faces-redirect=true";
     }

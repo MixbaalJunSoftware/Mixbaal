@@ -8,48 +8,42 @@
         <title>Crear Libro</title>
     </h:head>
     <h:body>
-        <h:form>
             <p:panel header="Crar un Libro">
-                <!--<h:form>
-                    <h2>Editar cuenta</h2>
-                    <p:graphicImage value="/public/imagenes/usuario.png" id="fperfil2" />
+                <h:form enctype="multipart/form-data">
                     <p:panelGrid columns="2">
-                        <h:outputText value="Cambiar imagen:" />  
-                        <h:form enctype="multipart/form-data">
+                        <h:outputText value="sube una imagen:" />  
                             <p:fileUpload fileUploadListener="{crearLibro.upload}" allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
-                                     sizeLimit="100000" value="Select Images" />                                           
-                        </h:form>
+                                          sizeLimit="100000" value="Select Images" />                                           
                     </p:panelGrid>
-                </h:form>-->
+                </h:form>
                 <h:form>
                     <p:growl id="messages" showDetail="true" />
                     <h:panelGrid columns="2" cellpadding="1">    
                         <h:outputText value="Titulo"/>
-                        <p:inputText id="titulo" value="#{crearLibro.nombre}" required="true"/>
+                        <p:inputText id="titulo" value="#{crearLibro.nombre}"/>
                         <h:outputText value="Autor"/>
-                        <p:inputText id="autor" value="#{crearLibro.autor}" required="true"/>
+                        <p:inputText id="autor" value="#{crearLibro.autor}"/>
                         <h:outputText value="Editorial"/>
-                        <p:inputText id="editorial" value="#{crearLibro.editorial}" required="true"/>
+                        <p:inputText id="editorial" value="#{crearLibro.editorial}"/>
                         <h:outputText value="Genero"/>
-                        <p:inputText id="genero" value="#{crearLibro.genero}" required="true"/>
+                        <p:inputText id="genero" value="#{crearLibro.genero}" />
                         <h:outputText value="Pais"/>
-                        <p:inputText id="pais" value="#{crearLibro.pais}" required="true"/>
+                        <p:inputText id="pais" value="#{crearLibro.pais}"/>
                         <h:outputText value="Descripcion"/>
-                        <p:inputTextarea  value="#{crearLibro.descripcion}" rows="6" cols="33" />
-                        <h:outputText value="Foto"/>
-                        <p:inputText id="foto_libro" value="#{crearLibro.foto}" required="true"/>
+                        <p:inputTextarea  value="#{crearLibro.descripcion}" rows="6" cols="33" >
+                            <!--<p:ajax event="keyup" update="crear" process="@this"/>-->
+                        </p:inputTextarea>
                         <h:outputText id="msn" value="#{crearLibro.msn}"/>
+                        <br/>
+                        <p:growl id="growl" showDetail="true" sticky="true" />
+                        <p:commandButton id="crear" value="Crear" action="#{crearLibro.crearLibro()}" actionListener="#{crearLibro.listener}" update="growl">
+                            <f:attribute name="usuario" value="#{entrar.usuario}" />
+                        </p:commandButton>
+                        <p:commandButton value="volver" action="perfilIH?faces-redirect=true"/>
+                        <br/>
                     </h:panelGrid>
-                    <br/>
-                    <p:growl id="growl" showDetail="true" sticky="true" />
-                    <p:commandButton value="Crear" action="#{crearLibro.crearLibro()}" actionListener="#{crearLibro.listener}" update="growl">
-                        <f:attribute name="usuario" value="#{entrar.usuario}" />
-                    </p:commandButton>
-                    <p:commandButton value="volver" action="perfilIH?faces-redirect=true"/>
-                    <br/>
                 </h:form>
             </p:panel>
-        </h:form>
     </h:body>
 </html>
 

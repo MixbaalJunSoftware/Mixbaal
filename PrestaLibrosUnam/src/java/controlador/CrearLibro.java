@@ -5,11 +5,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.Serializable;
 import javax.faces.application.FacesMessage;
 import modelo.Libro;
 import modelo.LibroDAO;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import modelo.Usuario;
@@ -17,9 +18,9 @@ import modelo.UsuarioDAO;
 import org.primefaces.event.FileUploadEvent;
 
 @ManagedBean
-@RequestScoped
+@SessionScoped
 
-public class CrearLibro {
+public class CrearLibro implements Serializable{
     
     private String nombre;
     private String editorial;
@@ -31,6 +32,15 @@ public class CrearLibro {
     private int idLibro;
     private String msn ;
     private Usuario usuario;
+    private boolean fotoSubida = false;
+    
+    public boolean getFotoSubida(){
+        return this.fotoSubida;
+    }
+    
+    public void setFotoSubida(boolean f){
+        this.fotoSubida = f;
+    }
 
     public String getNombre() {
         return nombre;
@@ -121,8 +131,8 @@ public class CrearLibro {
         libro.setDescripcion(this.getDescripcion());
         libro.setGenero(this.getGenero());
         libro.setPais(this.getPais());
-        libro.setFotoLibro(this.getFoto());
         libro.setUsuario(usuario);
+        libro.setFotoLibro(this.getFoto());
         FacesContext context = FacesContext.getCurrentInstance();
         context.addMessage(null, new FacesMessage("Exito", "El libro Se creó correctamente") );
         nombre="";
@@ -133,7 +143,7 @@ public class CrearLibro {
         pais="";
         foto="";
         ld.save(libro);
-        return "";
+        return "perfilIH";
     }
     
     private final String destination= "/home/luis/NetBeansProjects/Mixbaal/PrestaLibrosUnam/web/public/imagenes/libros/";
@@ -145,6 +155,7 @@ public class CrearLibro {
         try {
             LibroDAO ld = new LibroDAO();
             copyFile(String.valueOf(ld.maxIndice()), event.getFile().getInputstream());
+            this.fotoSubida = true;
         } catch (IOException e) {
             FacesMessage msg2 = new FacesMessage("Is NOT Succesful", event.getFile().getFileName() + " is not uploaded.");
             FacesContext.getCurrentInstance().addMessage(null, msg);
@@ -159,7 +170,6 @@ public class CrearLibro {
          byte[] bytes = new byte[1024]; 
          while ((read = in.read(bytes)) != -1) {
         out.write(bytes, 0, read);
-        UsuarioDAO ud = new UsuarioDAO();
         this.setFoto("/public/imagenes/libros/" + fileName);
       }
       in.close();

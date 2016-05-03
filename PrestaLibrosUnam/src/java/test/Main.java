@@ -9,6 +9,7 @@ import controlador.Registrar;
 import controlador.EditarUsuario;
 import modelo.Usuario;
 import controlador.EliminarUsuario;
+import controlador.Mail;
 import modelo.UsuarioDAO;
 
 
@@ -30,8 +31,8 @@ public class Main {
         u.setTelefono("1244");
         u.registraU();
       */
-      UsuarioDAO u = new UsuarioDAO();
-      System.out.println(u.maxIndice("usuario","idusuario"));
+//      UsuarioDAO u = new UsuarioDAO();
+//      System.out.println(u.maxIndice("usuario","idusuario"));
                 /**Prueba para eliminar usuario, lo probe y no fallo*/
                 /*
                 EliminarUsuario elim = new EliminarUsuario();
@@ -96,6 +97,7 @@ public class Main {
         edit.setTelefono("123456789");
         edit.editar();
         */
-       
+       Mail m = new Mail();
+       m.sendMail("prueba", "esto es una prueba", "daisuki_1941@hotmail.com");
     }
 }
