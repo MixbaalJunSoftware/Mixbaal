@@ -10,15 +10,14 @@ import javax.faces.application.FacesMessage;
 import modelo.Libro;
 import modelo.LibroDAO;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import modelo.Usuario;
-import modelo.UsuarioDAO;
 import org.primefaces.event.FileUploadEvent;
 
 @ManagedBean
-@SessionScoped
+@ViewScoped
 
 public class CrearLibro implements Serializable{
     
@@ -32,15 +31,7 @@ public class CrearLibro implements Serializable{
     private int idLibro;
     private String msn ;
     private Usuario usuario;
-    private boolean fotoSubida = false;
     
-    public boolean getFotoSubida(){
-        return this.fotoSubida;
-    }
-    
-    public void setFotoSubida(boolean f){
-        this.fotoSubida = f;
-    }
 
     public String getNombre() {
         return nombre;
@@ -132,6 +123,11 @@ public class CrearLibro implements Serializable{
         libro.setGenero(this.getGenero());
         libro.setPais(this.getPais());
         libro.setUsuario(usuario);
+        if(foto == null){
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage("Error", "Debes subir una imagen") );
+            return "";
+        }
         libro.setFotoLibro(this.getFoto());
         FacesContext context = FacesContext.getCurrentInstance();
         context.addMessage(null, new FacesMessage("Exito", "El libro Se creó correctamente") );
@@ -155,7 +151,6 @@ public class CrearLibro implements Serializable{
         try {
             LibroDAO ld = new LibroDAO();
             copyFile(String.valueOf(ld.maxIndice()), event.getFile().getInputstream());
-            this.fotoSubida = true;
         } catch (IOException e) {
             FacesMessage msg2 = new FacesMessage("Is NOT Succesful", event.getFile().getFileName() + " is not uploaded.");
             FacesContext.getCurrentInstance().addMessage(null, msg);

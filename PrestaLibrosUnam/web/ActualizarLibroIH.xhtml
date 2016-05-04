@@ -8,15 +8,23 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
+        <h:form enctype="multipart/form-data">
+            <p:panelGrid columns="2">
+                <h:outputText value="sube una imagen:" />  
+                <p:fileUpload fileUploadListener="#{actualizarLibro.upload}" allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
+                                          sizeLimit="100000" value="Select Images" />                                           
+            </p:panelGrid>
+        </h:form>
         <f:view>
             <h:form>
                 <h:panelGrid columns="2" cellpadding="5"> 
                     <h:outputText value="Descripcion"/>
                     <p:inputTextarea  value="#{actualizarLibro.descripcion}" rows="6" cols="33" />
-                    <h:outputText value="Foto"/>
-                    <p:inputText value="#{actualizarLibro.foto}"/>
                 </h:panelGrid>
-                <p:commandButton value="Actualizar" action="#{actualizarLibro.actualizarLibro}"/>
+                <br/>
+                <p:growl id="growl" showDetail="true" sticky="true" />
+                <p:commandButton value="Actualizar" action="#{actualizarLibro.actualizarLibro}" update="growl"/>
+                <p:commandButton value="volver" action="perfilIH?faces-redirect=true"/>
             </h:form>
         </f:view>
     </h:body>

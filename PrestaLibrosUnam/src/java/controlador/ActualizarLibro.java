@@ -62,12 +62,15 @@ public class ActualizarLibro implements Serializable{
             libro.setDescripcion(this.getDescripcion());
             modificado = true;
         }
-        if(!this.getFoto().equals("")){
-            libro.setFotoLibro(this.getFoto());
+        if(foto != null){
+            libro.setFotoLibro(foto);
             modificado = true;
         }
-        if(modificado)
+        if(modificado){
             ld.update(libro);
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage("Exito", "El libro Se creó correctamente") );
+        }
         return  "MisLibrosIH?faces-redirect=true";
     }
     
@@ -78,7 +81,7 @@ public class ActualizarLibro implements Serializable{
       FacesContext.getCurrentInstance().addMessage(null, msg);
       // Do what you want with the file
        try {
-         copyFile(String.valueOf(usuario.getIdusuario()), event.getFile().getInputstream());
+         copyFile(String.valueOf(libro.getIdlibro()), event.getFile().getInputstream());
        } catch (IOException e) {
          FacesMessage msg2 = new FacesMessage("Is NOT Succesful", event.getFile().getFileName() + " is not uploaded.");
          FacesContext.getCurrentInstance().addMessage(null, msg);
@@ -93,8 +96,7 @@ public class ActualizarLibro implements Serializable{
          byte[] bytes = new byte[1024]; 
          while ((read = in.read(bytes)) != -1) {
         out.write(bytes, 0, read);
-        UsuarioDAO ud = new UsuarioDAO();
-        this.setFoto("/public/imagenes/" + fileName);
+        this.setFoto("/public/imagenes/libros/" + fileName);
       }
       in.close();
       out.flush();
