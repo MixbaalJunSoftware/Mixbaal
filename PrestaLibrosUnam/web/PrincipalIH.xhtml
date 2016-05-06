@@ -11,42 +11,41 @@
             <title>PrestalibrosUnam</title>
             <link rel="stylesheet" href="/PrestaLibrosUnam/public/css/inicio.css"/>
         </h:head>
-        <h:body>
+        <h:body style="background-color:#0D1351">
             <p:layout fullPage="true">
                 <p:layoutUnit position="north" size="50"></p:layoutUnit>
                     <p:growl id="messages"/>
+                    <style type="text/css">
+                        .ui-menubar   {background-color: #0D1351 !important; background: blue;}
+                    </style>
                     <h:form>
-                        <p:menubar>
-                            <p:menuitem value="PrestaLibrosUnam" action="PrincipalIH?faces-redirect=true"/>
+                        <p:menubar styleClass="ui-menubar">
+                            <p:menuitem value="PrestaLibrosUnam" action="PrincipalIH?faces-redirect=true" style="color: white;"/>
                             <f:facet name="options">
                                 
-                                <p:inputText style="margin-right:10px" placeholder="Search"/>
-                                <c:if test="#{!entrar.hayUsuario()}">
-                                <p:commandButton  action="EntrarIH?faces-redirect=true" value="Entrar" icon="ui-icon-enterlink"/>
-                                </c:if>
-                                <c:if test="#{entrar.hayUsuario()}">
-                                    <p:commandLink value="#{entrar.usuario.getNombre()}" style="margin-right:10px" action="perfilIH"/>
-                                    
-                                    <p:commandButton  action="#{entrar.salir()}" value="Salir" icon="ui-icon-enterlink" /><!--onclick="window.location.reload();"-->
-                                </c:if>
+                            <p:inputText style="margin-right:10px" placeholder="Search"/>
+                            <c:if test="#{!entrar.hayUsuario()}">
+                                <p:commandButton  action="EntrarIH?faces-redirect=true" value="Entrar" icon="ui-icon-enterlink" style="background-color:#333367; color: white;"/>
+                            </c:if>
+                            <c:if test="#{entrar.hayUsuario()}">
+                                <p:commandLink value="#{entrar.usuario.getNombre()}" style="margin-right:10px; color: whitesmoke" action="perfilIH?faces-redirect=true" />
+                                <p:commandButton  action="#{entrar.salir()}" value="Salir" icon="ui-icon-enterlink" style="background-color:#333367; color: white;"/><!--onclick="window.location.reload();"-->
+                            </c:if>
                             </f:facet>
-                            
                         </p:menubar>
-
                     </h:form>
                     
                 
-                    <p:layoutUnit id="footer" position="south" size="50">
-                    
-                </p:layoutUnit>
-                <p:layoutUnit id="center" position="center" size="50">
-                    <h:form>
-                        <p:dataScroller value="#{verPublica.libros}" var="libro">
-                            <f:facet name="header">
+                    <!--<p:layoutUnit id="footer" position="south" size="50" style="background-color:#0D1351">
+                    </p:layoutUnit>-->
+                    <p:layoutUnit id="center" position="center" size="50" style="background-color:#0D1351">
+                    <h:form class="ui-libros">
+                        <p:dataScroller value="#{verPublica.libros}" var="libro" >
+                            <f:facet name="header" id="titulo">
                                Libros disponibles
                             </f:facet>
  
-                            <h:panelGrid columns="3" style="width:50%">
+                            <h:panelGrid columns="3" style="width:50%" class="libros" >
                                 <p:graphicImage value="#{libro.fotoLibro}" id="foto_libro" width="200" height="200" />
                                 <p:outputPanel>
                                     <h:panelGrid columns="2" cellpadding="5">

@@ -142,7 +142,7 @@ public class CrearLibro implements Serializable{
         return "perfilIH";
     }
     
-    private final String destination= "/home/luis/NetBeansProjects/Mixbaal/PrestaLibrosUnam/web/public/imagenes/libros/";
+    private final String destination= "/home/jonathanjb/NetBeansProjects/Mixbaal/PrestaLibrosUnam/web/public/imagenes/libros/";
     
     public void upload (FileUploadEvent event) {
       FacesMessage msg = new FacesMessage("Success! ", event.getFile().getFileName() + " is uploaded.");

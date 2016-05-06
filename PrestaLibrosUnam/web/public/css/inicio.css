@@ -8,27 +8,25 @@ and open the template in the editor.
     Author     : jonathanjb
 */
 
+
 body
 {
-    background-color: #8BB9C7;
+    background-color: #AA8216;
 }
-
 
 #header
 {
-    background-color: #8BB9C7;
+    
     padding: 20px; 
 }
 
 #center
 {
-    background-color: #8BB9C7;
     padding: 20px; 
 }
 
 #footer
 {
-    background-color: #8BB9C7;
+    
     padding: 20px; 
 }
-

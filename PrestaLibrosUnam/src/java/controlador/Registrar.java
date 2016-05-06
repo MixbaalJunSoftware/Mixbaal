@@ -22,7 +22,7 @@ public class Registrar {
     private String apm;//Apellido materno del usuario.
     private String password;//contrasenia del usuario.
     private String cpassword;
-    private int telefono;//Teleffono del usuario.
+    private String telefono;//Teleffono del usuario.
     private String facultad;//Facultad del usuario. 
     private String correo;//Correo del usuario.
     private String msn; 
@@ -116,14 +116,14 @@ public class Registrar {
      * 
      * @return el telefono del usuario 
      */
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
     /**
      * 
      * @param telefono el telefono de el usuario. 
      */
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
     /**

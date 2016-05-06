@@ -21,46 +21,46 @@ and open the template in the editor.
         <p:layout fullPage="true">
                 <p:layoutUnit position="north" size="50"></p:layoutUnit>
                     <p:growl id="messages"/>
+                    <style type="text/css">
+                        .ui-menubar   {background-color: #0D1351 !important; background: blue;}
+                    </style>
                     <h:form>
-                        <p:menubar>
+                        <p:menubar styleClass="ui-menubar">
+                            <p:menuitem value="PrestaLibrosUnam" action="PrincipalIH?faces-redirect=true" style="color: whitesmoke;"/>
                             <f:facet name="options">
                                 <p:inputText style="margin-right:10px" placeholder="Search"/>
-                                <p:commandButton  action="#{entrar.salir()}" value="salir" icon="ui-icon-enterlink"/>
+                                <p:commandButton  action="#{entrar.salir()}" value="salir" icon="ui-icon-enterlink" style=" background-color:white; color:#0D1351 "/>
                             </f:facet>                          
                         </p:menubar>
                     </h:form>
                     
-                <p:layoutUnit id="footer" position="south" size="50">
-                    
-                </p:layoutUnit>
-                <p:layoutUnit position="west" size = "250">
-                    <h:form>
-                    
-                        <p:graphicImage value="#{entrar.usuario.getFotoUsr()}" id="fperfil2"  style="width: 200px; height: 200px;" />
-                    
-                    <p:menu>
-                    <p:submenu label="Mi cuenta">
-                        <p:menuitem value="Mi cuenta" outcome="perfilIH?faces-redirect=true" update="messages"/>
-                    </p:submenu>
-                   <p:submenu label="Administrar Libro">
-                      <p:menuitem value="Crear Libro" outcome="CrearLibroIH?faces-redirect=true" update="messages"/>
-                      <p:menuitem value="Mis libros" outcome="MisLibrosIH?faces-redirect=true" update="messages"/>
-                   </p:submenu>
-                   <p:submenu label="Solicitudes Pendientes">
-                     <p:menuitem value="Solicitudes pendientes" outcome="SolicitudesIH?faces-redirect=true"/>
-                  </p:submenu>     
-                  <p:submenu label="Editar cuenta">
-                      <p:menuitem value="Editar Cuenta" action="EditarCuentaIH?faces-redirect=true" actionListener="#{editarUsuario.listener}">
-                          <f:attribute name="usuario" value="#{entrar.usuario}" />
-                      </p:menuitem>                    
-                  </p:submenu>
-                  </p:menu>
-                  </h:form>  
+                <!--<p:layoutUnit id="footer" position="south" size="50"></p:layoutUnit>-->
+                <p:layoutUnit position="west" size = "270" style="background-color:#0D1351">
+                    <h:form style="text-align: center;">
+                        <p:graphicImage value="#{entrar.usuario.getFotoUsr()}" id="fperfil2"  style="width: 150px; height: 150px;" />
+                        <p:menu>
+                            <p:submenu label="Mi cuenta">
+                                <p:menuitem value="Mi cuenta" outcome="perfilIH?faces-redirect=true" update="messages"/>
+                            </p:submenu>
+                            <p:submenu label="Administrar Libro">
+                                <p:menuitem value="Crear Libro" outcome="CrearLibroIH?faces-redirect=true" update="messages"/>
+                                <p:menuitem value="Mis libros" outcome="MisLibrosIH?faces-redirect=true" update="messages"/>
+                            </p:submenu>
+                            <p:submenu label="Solicitudes Pendientes">
+                                <p:menuitem value="Solicitudes pendientes" outcome="SolicitudesIH?faces-redirect=true"/>
+                            </p:submenu>     
+                            <p:submenu label="Editar cuenta">
+                                <p:menuitem value="Editar Cuenta" action="EditarCuentaIH?faces-redirect=true" actionListener="#{editarUsuario.listener}">
+                                    <f:attribute name="usuario" value="#{entrar.usuario}" />
+                                </p:menuitem>                    
+                            </p:submenu>
+                        </p:menu>
+                    </h:form>  
                 </p:layoutUnit>
                     
-                    <p:layoutUnit position="center" resizable="true" size="50">
+                <p:layoutUnit position="center" resizable="true" size="50">
                        
-                       <h:form>
+                    <h:form>
                            <p:growl id="growl" showDetail="true" sticky="true" />
                            <p:dataScroller value="#{misLibros.libros}" var="libro">
                             <f:facet name="header">
